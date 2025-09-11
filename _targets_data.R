@@ -1,6 +1,21 @@
 # Data targets -----------------------------------------------------------------
 
 
+## Setup data store for RAG ----
+
+db_store_targets <- tar_plan(
+  tar_target(
+    name = llm_embed_model,
+    command = select_llm_embed_model(src = "embed2:568m")
+  ),
+  db_store_location = "spph.duckdb",
+  db_store = ragnar::ragnar_store_create(
+    location = db_store_location,
+    embed = \(x) ragnar::embed_ollama(x = x, model = llm_embed_model)
+  )
+)
+
+
 ## QS world university rankings ----
 
 qs_data_targets <- tar_plan(
@@ -67,6 +82,17 @@ aspher_data_targets <- tar_plan(
   tar_target(
     name = aspher_members_list,
     command = aspher_process_members_list(aspher_members_list_raw)
+  ),
+  aspher_members_info_link = aspher_members_list$link,
+  tar_target(
+    name = aspher_members_info,
+    command = aspher_process_member(
+      .url = aspher_members_info_link, store = db_store
+    ),
+    pattern = map(aspher_members_info_link)
   )
 )
+
+
+
 
