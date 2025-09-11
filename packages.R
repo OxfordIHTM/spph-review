@@ -26,6 +26,11 @@ library(googlesheets4)
 library(rvest)
 
 
+## PDF scraping packages ----
+
+library(pdftools)
+
+
 ## LLM packages ----
 
 library(ragnar)

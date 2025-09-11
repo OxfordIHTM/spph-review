@@ -30,7 +30,8 @@ qs_data_targets <- tar_plan(
       qs_gdrive_file = qs_gdrive_list,
       destdir = "data-raw/qs"
     ),
-    pattern = map(qs_gdrive_list)
+    pattern = map(qs_gdrive_list),
+    format = "file"
   ),
   tar_target(
     name = qs_overall_rankings_list,
@@ -45,14 +46,41 @@ qs_data_targets <- tar_plan(
     name = qs_overall_rankings,
     command = qs_process_overall_rankings(qs_overall_rankings_list),
     pattern = map(qs_overall_rankings_list)
-  )
+  ),
+
 )
 
 
 ## THE world university rankings ----
 
 the_data_targets <- tar_plan(
-  
+  the_gdrive_id = "1zem2pl6w1uJiN_IcJUaCr2COUBx6ur8I",
+  tar_target(
+    name = the_gdrive_ranking_download_links,
+    command = the_gdrive_get_download_links(the_id = the_gdrive_id)
+  ),
+  tar_target(
+    name = the_rankings_download_files,
+    command = the_download_ranking_file(
+      .url = the_gdrive_ranking_download_links, destdir = "data-raw/the"
+    ),
+    pattern = map(the_gdrive_ranking_download_links),
+    format = "file"
+  ),
+  the_rankings_pdf_pages = the_set_ranking_pages(),
+  tar_target(
+    name = the_rankings_pdf_text,
+    command = the_read_rankings(
+      path = the_rankings_download_files, pages = the_rankings_pdf_pages
+    ),
+    pattern = map(the_rankings_download_files, the_rankings_pdf_pages),
+    iteration = "list"
+  ),
+  tar_target(
+    name = the_overall_rankings,
+    command = the_process_rankings(the_rankings_pdf_text),
+    pattern = map(the_rankings_pdf_text)
+  )
 )
 
 
