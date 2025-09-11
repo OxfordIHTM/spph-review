@@ -7,3 +7,7 @@ _targets
 docs
 
 README.html
+
+spph.duckdb
+
+data-raw/the/*.pdf

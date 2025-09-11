@@ -11,15 +11,15 @@ jobs:
   test-targets-workflow:
     runs-on: ubuntu-latest
     container: rocker/tidyverse:4.5.1
-    env:
-      GIT_CRYPT_KEY64: ${{ secrets.GIT_CRYPT_KEY64 }}
+    # env:
+    #   GIT_CRYPT_KEY64: ${{ secrets.GIT_CRYPT_KEY64 }}
     steps:
       - uses: actions/checkout@v4
       
       - name: Install system dependencies
         run: |
           apt-get update && apt-get install -y --no-install-recommends \
-          libxt6 libglpk-dev
+          libxt6 libglpk-dev libpoppler-cpp-dev
           
       - name: Trust git repo
         run: |
@@ -39,5 +39,8 @@ jobs:
         
       - name: Run workflow
         run: |
-          targets::tar_make()
+          targets::tar_make(qs_overall_rankings)
+          targets::tar_make(the_overall_rankings)
+          targets::tar_make(aspph_members_list)
+          targets::tar_make(aspher_members_list)
         shell: Rscript {0}
