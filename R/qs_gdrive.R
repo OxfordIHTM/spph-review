@@ -17,7 +17,7 @@ qs_download_overall_rankings <- function(qs_gdrive_file,
                                          destdir,
                                          overwrite = FALSE) {
   if (!dir.exists(destdir)) {
-    dir.create(path = destdtir)
+    dir.create(path = destdir)
   }
   
   download_path <- file.path(destdir, qs_gdrive_file$name)
