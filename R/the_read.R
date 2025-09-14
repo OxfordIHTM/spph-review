@@ -23,18 +23,45 @@ the_process_rankings <- function(the_text) {
     X = the_text[[1]],
     FUN = function(x) {
       x <- x[!grepl(pattern = "Times Higher Education", x = x)]
-      x <- x[grepl(pattern = "^[1-9]{1,}|^\\s{1,}[1-9]{1,}", x = x)] |>
-        stringr::str_replace_all(pattern = "^\\s{18,21}", replacement = ";") |>
+      x <- x[grepl(pattern = "^[1-9]{1,}|^\\s{1,}[1-9]{1,}|^\\(|^\\=", x = x)] |>
+        stringr::str_replace_all(pattern = "^\\s{25,}", replacement = ";;") |>
+        stringr::str_replace_all(pattern = "^\\s{10,24}|^\\(continued\\)\\s{1,}", replacement = ";") |>
+        trimws() |>
         stringr::str_replace_all(pattern = "\\s{3,}", replacement = ";") |>
         stringr::str_replace(pattern = "\\b \\b", replacement = ";")
     }
   ) |>
     unlist() 
-  
+
+  if (names(the_text) == 2024) {
+    x <- x |>
+      stringr::str_replace(pattern = " Kumamoto", replacement = ";Kumamoto") |>
+      stringr::str_replace(pattern = " Qassim", replacement = ";Qassim") |>
+      stringr::str_replace(
+        pattern = "Dhanbad India", replacement = "Dhanbad;India"
+      )
+  }
+
   if (names(the_text) == 2023) {
     x <- x[1:836]
   }
+
+  if (names(the_text) == 2022) {
+    x <- x |>
+      stringr::str_replace(
+        pattern = " University of the Aegean", 
+        replacement = ";University of the Aegean"
+      )
+  }
   
+  if (names(the_text) == 2021) {
+    x <- x |>
+      stringr::str_replace(
+        pattern = "\\(KAIST\\) South", 
+        replacement = "(KAIST);South"
+      )
+  }
+
   x |>
     stringr::str_split(pattern = ";", simplify = TRUE) |>
     (\(x) x[ , 1:10])() |>
