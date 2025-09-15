@@ -84,6 +84,28 @@ the_data_targets <- tar_plan(
 )
 
 
+## Shanghai Rankings - public health ----
+
+sr_data_targets <- tar_plan(
+  sr_gdrive_id = "1dy99Oednn28z1Q3DmSnQ8Ep4DgPoFgD6",
+  tar_target(
+    name = sr_ph_rankings_gdrive_list,
+    command = sr_get_gdrive_list(sr_gdrive_id)
+  ),
+  tar_target(
+    name = sr_ph_rankings_download_file,
+    command = sr_download_ph_rankings(
+      sr_gdrive_file = sr_ph_rankings_gdrive_list,
+      destdir = "data-raw/sr"
+    ),
+    format = "file"
+  ),
+  tar_target(
+    name = sr_public_health_rankings,
+    command = readxl::read_xlsx(path = sr_ph_rankings_download_file)
+  )
+)
+
 ## ASPPH membership ----
 
 aspph_data_targets <- tar_plan(
