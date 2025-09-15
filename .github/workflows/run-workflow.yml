@@ -25,7 +25,6 @@ jobs:
       #     cache-version: 2
 
       - name: Install packages from renv.lock (local, no cache)
-        if: ${{ env.ACT }}  
         run: |
           renv::restore()
         shell: Rscript {0}
