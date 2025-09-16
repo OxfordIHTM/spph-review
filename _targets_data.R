@@ -16,6 +16,21 @@ db_store_targets <- tar_plan(
 )
 
 
+## World Bank data ----
+
+wb_data_targets <- tar_plan(
+  wb_income_download_url = "https://ddh-openapi.worldbank.org/resources/DR0095333/download",
+  tar_target(
+    name = wb_income_download_file,
+    command = wb_download_income_groups(destdir = "data-raw/wb"),
+    format = "file"
+  ),
+  tar_target(
+    name = wb_income_groups,
+    command = wb_read_income_groups(wb_file = wb_income_download_file)
+  )
+)
+
 ## QS world university rankings ----
 
 qs_data_targets <- tar_plan(
@@ -46,8 +61,7 @@ qs_data_targets <- tar_plan(
     name = qs_overall_rankings,
     command = qs_process_overall_rankings(qs_overall_rankings_list),
     pattern = map(qs_overall_rankings_list)
-  ),
-
+  )
 )
 
 
@@ -101,8 +115,17 @@ sr_data_targets <- tar_plan(
     format = "file"
   ),
   tar_target(
+    name = sr_public_health_rankings_raw,
+    command = readxl::read_xlsx(
+      path = sr_ph_rankings_download_file,
+      col_types = c(rep("text", 4), rep("numeric", 6))
+    )
+  ),
+  tar_target(
     name = sr_public_health_rankings,
-    command = readxl::read_xlsx(path = sr_ph_rankings_download_file)
+    command = sr_process_ph_rankings(
+      sr_public_health_rankings_raw, wb_income_groups
+    )
   )
 )
 
