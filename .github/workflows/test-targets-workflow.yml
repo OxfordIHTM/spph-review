@@ -41,6 +41,7 @@ jobs:
         run: |
           targets::tar_make(qs_overall_rankings)
           targets::tar_make(the_overall_rankings)
+          targets::tar_make(sr_overall_rankings)
           targets::tar_make(aspph_members_list)
           targets::tar_make(aspher_members_list)
         shell: Rscript {0}
