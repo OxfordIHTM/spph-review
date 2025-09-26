@@ -170,18 +170,25 @@ aspher_data_targets <- tar_plan(
 ## UCLA ----
 
 ucla_data_targets <- tar_plan(
-  ucla_ph_master_programme_base_link = "https://ph.ucla.edu/degrees-programs/find-compare-degree-programs?degree_program[]=198,202,199",
-  ucla_ph_master_programme_page = seq_len(3),
+  ucla_master_programme_base_link = "https://ph.ucla.edu/degrees-programs/find-compare-degree-programs?degree_program[]=198,202,199",
+  ucla_master_programme_page = seq_len(3),
   tar_target(
-    name = ucla_ph_master_programme_links,
+    name = ucla_master_programme_links,
     command = ucla_get_master_programme_links(
-      base_url = ucla_ph_master_programme_base_link, 
-      page = ucla_ph_master_programme_page 
+      base_url = ucla_master_programme_base_link, 
+      page = ucla_master_programme_page 
     ),
-    pattern = map(ucla_ph_master_programme_page)
+    pattern = map(ucla_master_programme_page)
   )
 )
 
 
+## HSPH ----
 
-
+hsph_data_targets <- tar_plan(
+  hsph_master_programme_base_link = "https://hsph.harvard.edu/program-finder/?pf_degree_type=masters-degrees",
+  tar_target(
+    name = hsph_master_programme_links,
+    command = hsph_get_master_programme_links(.url = hsph_master_programme_base_link)
+  )
+)
