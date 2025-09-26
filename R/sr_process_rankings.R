@@ -22,15 +22,9 @@ sr_process_ph_rankings <- function(sr_ph_rankings_raw, wb_income_groups) {
       ),
       overall_score = ifelse(
         is.na(overall_score), 
-        faculty + output + research + research_impact + international_collaboration,
+        faculty + output + research + research_impact + 
+          international_collaboration,
         overall_score
-      ),
-      url_shanghai_ranking = file.path(
-        "https://www.shanghairanking.com/institution",
-        institution |>
-          stringr::str_remove_all(pattern = "\\(|\\)|\\s-|\\'|\\,") |>
-          tolower() |>
-          gsub(pattern = "\\s", replacement = "-", x = _)
       )
     ) |>
     dplyr::left_join(y = wb_income_groups, by = "iso3c") |>

@@ -12,3 +12,6 @@ spph.duckdb
 
 data-raw/the/*.pdf
 data-raw/qs/*.xlsx
+
+data/
+!data/.gitkeep

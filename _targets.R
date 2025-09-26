@@ -30,9 +30,7 @@ analysis_targets <- tar_plan(
 
 
 ## Output targets ----
-output_targets <- tar_plan(
-  
-)
+source("_targets_output.R")
 
 
 ## Reporting targets ----
