@@ -192,3 +192,21 @@ hsph_data_targets <- tar_plan(
     command = hsph_get_master_programme_links(.url = hsph_master_programme_base_link)
   )
 )
+
+
+## LSHTM ----
+
+lshtm_data_targets <- tar_plan(
+  lshtm_master_programme_base_link = "https://www.lshtm.ac.uk/study/courses/masters-degrees"
+)
+
+
+## Yale ----
+
+yale_data_targets <- tar_plan(
+  yale_master_programme_base_link = "https://ysph.yale.edu/school-of-public-health/graduate-programs/",
+  tar_target(
+    name = yale_master_programme_links,
+    command = yale_get_master_programme_links(.url = yale_master_programme_base_link)
+  )
+)
