@@ -210,3 +210,14 @@ yale_data_targets <- tar_plan(
     command = yale_get_master_programme_links(.url = yale_master_programme_base_link)
   )
 )
+
+
+## Columbia University Mailman School of Public Health ----
+
+mail_data_targets <- tar_plan(
+  mail_master_programme_base_link = "https://www.publichealth.columbia.edu/academics/degrees",
+  tar_target(
+    nam = mail_master_programme_links,
+    command = mail_get_master_programme_links(.url = mail_master_programme_base_link)
+  )
+)
