@@ -217,7 +217,20 @@ yale_data_targets <- tar_plan(
 mail_data_targets <- tar_plan(
   mail_master_programme_base_link = "https://www.publichealth.columbia.edu/academics/degrees",
   tar_target(
-    nam = mail_master_programme_links,
+    name = mail_master_programme_links,
     command = mail_get_master_programme_links(.url = mail_master_programme_base_link)
+  )
+)
+
+
+## University of Michigan School of Public Health ----
+
+mich_data_targets <- tar_plan(
+  mich_master_programme_base_link = "https://sph.umich.edu/admissions/programs-degrees/masters/degrees-and-requirements.html",
+  tar_target(
+    name = mich_master_programme_links,
+    command = mich_get_master_programme_links(
+      .url = mich_master_programme_base_link
+    )
   )
 )
