@@ -388,3 +388,13 @@ stan_data_targets <- tar_plan(
     command = stan_get_master_programme_links()
   )
 )
+
+
+## UNSW Master of Public Health ----
+
+unsw_data_targets <- tar_plan(
+  tar_target(
+    name = unsw_master_programme_links,
+    command = unsw_get_master_programme_links()
+  )
+)
