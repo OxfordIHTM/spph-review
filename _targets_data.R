@@ -411,3 +411,16 @@ eras_data_targets <- tar_plan(
     )
   )
 )
+
+
+## University of Sao Paulo Public Health ----
+
+usp_data_targets <- tar_plan(
+  usp_master_programme_base_link = "https://www.fsp.usp.br/pos/",
+  tar_target(
+    name = usp_master_programme_links,
+    command = usp_get_master_programme_links(
+      .url = usp_master_programme_base_link
+    )
+  )
+)
