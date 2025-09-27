@@ -338,3 +338,19 @@ hku_data_targets <- tar_plan(
     )
   )
 )
+
+
+## Rollins School of Public Health ----
+
+emory_data_targets <- tar_plan(
+  emory_master_programme_base_link = "https://sph.emory.edu/degrees-programs/explore-programs?keys=&field_program_type_target_id%5B1101%5D=1101&field_program_type_target_id%5B521%5D=521&field_program_type_target_id%5B526%5D=526",
+  emory_master_programme_page = 0:1,
+  tar_target(
+    name = emory_master_programme_links,
+    command = emory_get_master_programme_links(
+      base_url = emory_master_programme_base_link, 
+      page = emory_master_programme_page
+    ),
+    pattern = map(emory_master_programme_page)
+  )
+)
