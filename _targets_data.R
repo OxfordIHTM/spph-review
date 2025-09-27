@@ -447,3 +447,16 @@ busph_data_targets <- tar_plan(
     )
   )
 )
+
+
+## University of Melbourne public health ----
+
+melb_data_targets <- tar_plan(
+  melb_master_programme_base_link = "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/public-health",
+  tar_target(
+    name = melb_master_programme_links,
+    command = melb_get_master_programme_links(
+      .url = melb_master_programme_base_link
+    )
+  )
+)
