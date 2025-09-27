@@ -325,3 +325,16 @@ sydn_data_targets <- tar_plan(
     )
   )
 )
+
+
+## HKU School of Public Health ----
+
+hku_data_targets <- tar_plan(
+  hku_master_programme_base_link = "https://www.mph.sph.hku.hk/programme-overview",
+  tar_target(
+    name = hku_master_programme_links,
+    command = hku_get_master_programme_links(
+      .url = hku_master_programme_base_link
+    )
+  )
+)
