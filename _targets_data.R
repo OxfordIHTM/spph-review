@@ -424,3 +424,13 @@ usp_data_targets <- tar_plan(
     )
   )
 )
+
+
+## University of Ottawa public health ----
+
+uott_data_targets <- tar_plan(
+  tar_target(
+    name = uott_master_programme_links,
+    command = uott_get_master_programme_links()
+  )
+)
