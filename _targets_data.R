@@ -354,3 +354,14 @@ emory_data_targets <- tar_plan(
     pattern = map(emory_master_programme_page)
   )
 )
+
+
+## Imperial College School of Public Health ----
+
+imp_data_targets <- tar_plan(
+  imp_master_programme_base_link = "https://www.imperial.ac.uk/school-public-health/study/postgraduate/masters/",
+  tar_target(
+    name = imp_master_programme_links,
+    command = imp_get_master_programme_links()
+  )
+)
