@@ -247,3 +247,16 @@ ucl_data_targets <- tar_plan(
     )
   )
 )
+
+
+## Johns Hopkins BSPH ----
+
+bsph_data_targets <- tar_plan(
+  bsph_master_programme_base_link = "https://publichealth.jhu.edu/academics/academic-program-finder/masters-degrees",
+  tar_target(
+    name = bsph_master_programme_links,
+    command = bsph_get_master_programme_links(
+      .url = bsph_master_programme_base_link
+    )
+  )
+)
