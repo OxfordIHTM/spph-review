@@ -460,3 +460,16 @@ melb_data_targets <- tar_plan(
     )
   )
 )
+
+
+## University of Bristol public health ----
+
+brist_data_targets <- tar_plan(
+  brist_master_programme_base_link = "https://www.bristol.ac.uk/study/postgraduate/search/?filterSchools=Bristol%20Medical%20School&page=1",
+  tar_target(
+    name = brist_master_programme_links,
+    command = brist_get_master_programme_links(
+      .url = brist_master_programme_base_link
+    )
+  )
+)
