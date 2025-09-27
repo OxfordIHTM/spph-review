@@ -2,7 +2,7 @@
 #' Get Yale public health degrees information
 #' 
 
-yale_get_master_programme_links <- function(.url) {
+ysph_get_master_programme_links <- function(.url) {
   current_session <- rvest::session(url = .url)
 
   degree_name <- current_session |>
