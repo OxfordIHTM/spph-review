@@ -378,3 +378,13 @@ upen_data_targets <- tar_plan(
     )
   )
 )
+
+
+## Stanford Public Health ----
+
+stan_data_targets <- tar_plan(
+  tar_target(
+    name = stan_master_programme_links,
+    command = stan_get_master_programme_links()
+  )
+)
