@@ -365,3 +365,16 @@ imp_data_targets <- tar_plan(
     command = imp_get_master_programme_links()
   )
 )
+
+
+## UPenn Perelman School of Meeicine ----
+
+upen_data_targets <- tar_plan(
+  upen_master_programme_base_link = "https://www.med.upenn.edu/maccentral/masters-programs.html",
+  tar_target(
+    name = upen_master_programme_links,
+    command = upen_get_master_programme_links(
+      .url = upen_master_programme_base_link
+    )
+  )
+)
