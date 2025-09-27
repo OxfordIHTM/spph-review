@@ -3,17 +3,17 @@
 
 ## Setup data store for RAG ----
 
-db_store_targets <- tar_plan(
-  tar_target(
-    name = llm_embed_model,
-    command = select_llm_embed_model(src = "embed2:568m")
-  ),
-  db_store_location = "spph.duckdb",
-  db_store = ragnar::ragnar_store_create(
-    location = db_store_location,
-    embed = \(x) ragnar::embed_ollama(x = x, model = llm_embed_model)
-  )
-)
+# db_store_targets <- tar_plan(
+#   tar_target(
+#     name = llm_embed_model,
+#     command = select_llm_embed_model(src = "embed2:568m")
+#   ),
+#   db_store_location = "spph.duckdb",
+#   db_store = ragnar::ragnar_store_create(
+#     location = db_store_location,
+#     embed = \(x) ragnar::embed_ollama(x = x, model = llm_embed_model)
+#   )
+# )
 
 
 ## World Bank data ----
@@ -155,15 +155,15 @@ aspher_data_targets <- tar_plan(
   tar_target(
     name = aspher_members_list,
     command = aspher_process_members_list(aspher_members_list_raw)
-  ),
-  aspher_members_info_link = aspher_members_list$link,
-  tar_target(
-    name = aspher_members_info,
-    command = aspher_process_member(
-      .url = aspher_members_info_link, store = db_store
-    ),
-    pattern = map(aspher_members_info_link)
-  )
+  )#,
+  # aspher_members_info_link = aspher_members_list$link,
+  # tar_target(
+  #   name = aspher_members_info,
+  #   command = aspher_process_member(
+  #     .url = aspher_members_info_link, store = db_store
+  #   ),
+  #   pattern = map(aspher_members_info_link)
+  # )
 )
 
 
@@ -231,6 +231,19 @@ mich_data_targets <- tar_plan(
     name = mich_master_programme_links,
     command = mich_get_master_programme_links(
       .url = mich_master_programme_base_link
+    )
+  )
+)
+
+
+## UCL public health ----
+
+ucl_data_targets <- tar_plan(
+  ucl_master_programme_base_link = "https://www.ucl.ac.uk/population-health-sciences/study/postgraduate-taught-degrees",
+  tar_target(
+    name = ucl_master_programme_links,
+    command = ucl_get_master_programme_links(
+      .url = ucl_master_programme_base_link
     )
   )
 )
