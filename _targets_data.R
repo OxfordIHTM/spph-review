@@ -260,3 +260,16 @@ bsph_data_targets <- tar_plan(
     )
   )
 )
+
+
+## UCSF public health ----
+
+ucsf_data_targets <- tar_plan(
+  ucsf_master_programme_base_link = "https://graduate.ucsf.edu/admission/programs",
+  tar_target(
+    name = ucsf_master_programme_links,
+    command = ucsf_get_master_programme_links(
+      .url = ucsf_master_programme_base_link
+    )
+  )
+)
