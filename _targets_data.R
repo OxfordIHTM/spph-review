@@ -301,3 +301,14 @@ wsph_data_targets <- tar_plan(
 )
 
 
+## UNC Gillings School of Public Health ----
+
+gsph_data_targets <- tar_plan(
+  gsph_master_programme_base_link = "https://sph.unc.edu/resource-pages/masters-degrees/",
+  tar_target(
+    name = gsph_master_programme_links,
+    command = gsph_get_master_programme_links(
+      .url = gsph_master_programme_base_link
+    )
+  )
+)
