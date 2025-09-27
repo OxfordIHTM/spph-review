@@ -398,3 +398,16 @@ unsw_data_targets <- tar_plan(
     command = unsw_get_master_programme_links()
   )
 )
+
+
+## Erasmus University Rotterdam Public Health ----
+
+eras_data_targets <- tar_plan(
+  eras_master_programme_base_link = "https://www.eur.nl/en/education/master/overview?s=Public%20Health&f[0]=discipline%3A890&f[1]=mode%3A1261&f[2]=type%3Amaster",
+  tar_target(
+    name = eras_master_programme_links,
+    command = eras_get_master_programme_links(
+      .url = eras_master_programme_base_link
+    )
+  )
+)
