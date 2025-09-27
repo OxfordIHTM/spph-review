@@ -312,3 +312,16 @@ gsph_data_targets <- tar_plan(
     )
   )
 )
+
+
+## University of Sydney School of Public Health ----
+
+sydn_data_targets <- tar_plan(
+  sydn_master_programme_base_link = "https://www.sydney.edu.au/medicine-health/study-medicine-and-health/postgraduate-courses.html",
+  tar_target(
+    name = sydn_master_programme_links,
+    command = sydn_get_master_programme_links(
+      .url = sydn_master_programme_base_link
+    )
+  )
+)
