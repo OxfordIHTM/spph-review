@@ -434,3 +434,16 @@ uott_data_targets <- tar_plan(
     command = uott_get_master_programme_links()
   )
 )
+
+
+## BUSPH ----
+
+busph_data_targets <- tar_plan(
+  busph_master_programme_base_link = "https://www.bu.edu/sph/education/degrees-and-programs/",
+  tar_target(
+    name = busph_master_programme_links,
+    command = busph_get_master_programme_links(
+      .url = busph_master_programme_base_link
+    )
+  )
+)
