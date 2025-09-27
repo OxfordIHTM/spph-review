@@ -286,3 +286,18 @@ dlsph_data_targets <- tar_plan(
     )
   )
 )
+
+
+## University of Washington School of Public Health ----
+
+wsph_data_targets <- tar_plan(
+  wsph_master_programme_base_link = "https://sph.washington.edu/students/graduate-programs",
+  tar_target(
+    name = wsph_master_programme_links,
+    command = wsph_get_master_programme_links(
+      .url = wsph_master_programme_base_link
+    )
+  )
+)
+
+
