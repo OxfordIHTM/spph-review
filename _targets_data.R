@@ -201,13 +201,13 @@ lshtm_data_targets <- tar_plan(
 )
 
 
-## Yale ----
+## Yale School of Public Health ----
 
-yale_data_targets <- tar_plan(
-  yale_master_programme_base_link = "https://ysph.yale.edu/school-of-public-health/graduate-programs/",
+ysph_data_targets <- tar_plan(
+  ysph_master_programme_base_link = "https://ysph.yale.edu/school-of-public-health/graduate-programs/",
   tar_target(
-    name = yale_master_programme_links,
-    command = yale_get_master_programme_links(.url = yale_master_programme_base_link)
+    name = ysph_master_programme_links,
+    command = ysph_get_master_programme_links(.url = ysph_master_programme_base_link)
   )
 )
 
@@ -270,6 +270,19 @@ ucsf_data_targets <- tar_plan(
     name = ucsf_master_programme_links,
     command = ucsf_get_master_programme_links(
       .url = ucsf_master_programme_base_link
+    )
+  )
+)
+
+
+## Dalla Lana School of Public Health ----
+
+dlsph_data_targets <- tar_plan(
+  dlsph_master_programme_base_link = "https://www.dlsph.utoronto.ca/program-type/masters/",
+  tar_target(
+    name = dlsph_master_programme_links,
+    command = dlsph_get_master_programme_links(
+      .url = dlsph_master_programme_base_link
     )
   )
 )
