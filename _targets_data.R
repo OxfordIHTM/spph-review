@@ -490,12 +490,12 @@ kcl_data_targets <- tar_plan(
 
 ## Karolinska Institutet ----
 
-karol_data_targets <- tar_plan(
-  karol_master_programme_base_link = "https://education.ki.se/bachelors-masters-studies/masters-programmes",
-  tar_target(
-    name = karol_master_programme_links,
-    command = karol_get_master_programme_links(
-      .url = karol_master_programme_base_link
-    )
-  )
-)
+# karol_data_targets <- tar_plan(
+#   karol_master_programme_base_link = "https://education.ki.se/bachelors-masters-studies/masters-programmes",
+#   tar_target(
+#     name = karol_master_programme_links,
+#     command = karol_get_master_programme_links(
+#       .url = karol_master_programme_base_link
+#     )
+#   )
+# )
