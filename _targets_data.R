@@ -197,7 +197,22 @@ hsph_data_targets <- tar_plan(
 ## LSHTM ----
 
 lshtm_data_targets <- tar_plan(
-  lshtm_master_programme_base_link = "https://www.lshtm.ac.uk/study/courses/masters-degrees"
+  lshtm_master_programme_base_link = "https://www.lshtm.ac.uk/study/courses/masters-degrees",
+  lshtm_gdrive_id = "1NkGTly0dX4DKqmcMwZCuK_l-oiMLyR2e",
+  tar_target(
+    name = lshtm_master_programme_html_file,
+    command = lshtm_gdrive_download(
+      gdrive_id = lshtm_gdrive_id, file_path = "data-raw/lshtm/lshtm.html"
+    ),
+    format = "file"
+  ),
+  tar_target(
+    name = lshtm_master_programme_links,
+    command = lshtm_get_master_programme_links(
+      .url = lshtm_master_programme_base_link, 
+      html = lshtm_master_programme_html_file
+    )
+  )
 )
 
 
