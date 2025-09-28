@@ -473,3 +473,16 @@ brist_data_targets <- tar_plan(
     )
   )
 )
+
+
+## King's College public health ----
+
+kcl_data_targets <- tar_plan(
+  kcl_master_programme_base_link = "https://www.kcl.ac.uk/search/courses?level=postgraduate-taught&term=public%20health",
+  tar_target(
+    name = kcl_master_programme_links,
+    command = kcl_get_master_programme_links(
+      .url = kcl_master_programme_base_link
+    )
+  )
+)
