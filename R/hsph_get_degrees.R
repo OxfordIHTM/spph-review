@@ -33,8 +33,9 @@ hsph_get_master_programme_links <- function(.url) {
     url = programme_link
   ) |>
     dplyr::filter(
-      stringr::str_detect(string = degree, 
-        pattern = "Doctor of Philosophy", 
+      stringr::str_detect(
+        string = degree, 
+        pattern = "Doctor of Philosophy|Doctor|Dual|Joint", 
         negate = TRUE)
     )
 }
