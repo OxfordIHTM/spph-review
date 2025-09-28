@@ -22,5 +22,6 @@ ox_get_master_programme_links <- function(.url) {
     department = department_name,
     degree = degree_name,
     url = programme_link
-  )
+  ) |>
+    (\(x) x[c(1, 8:9, 14:15, 18, 20, 21:23, 25, 45:46, 49), ])()
 }
