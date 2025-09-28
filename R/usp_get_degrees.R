@@ -34,6 +34,10 @@ usp_get_master_programme_links <- function(.url,
 
 usp_gdrive_download <- function(gdrive_id, file_path, overwrite = FALSE) {
   if (!file.exists(file_path) | overwrite) {
+    if (!dir.exists(dirname(file_path))) {
+      dir.create(dirname(file_path), showWarnings = FALSE)
+    }
+
     googledrive::drive_ls(
       path = googledrive::as_id(gdrive_id), pattern = "html"
     ) |>
