@@ -512,3 +512,16 @@ ubc_data_targets <- tar_plan(
     )
   )
 )
+
+
+## University of Queensland ----
+
+queen_data_targets <- tar_plan(
+  queen_master_programme_base_link = "https://study.uq.edu.au/study-options/programs?search=%22public%20health%22&type=program&level[Postgraduate]=Postgraduate&study_areas[14]=14&year=2026",
+  tar_target(
+    name = queen_master_programme_links,
+    command = queen_get_master_programme_links(
+      .url = queen_master_programme_base_link
+    )
+  )
+)
