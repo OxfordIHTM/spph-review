@@ -415,15 +415,15 @@ eras_data_targets <- tar_plan(
 
 ## University of Sao Paulo Public Health ----
 
-usp_data_targets <- tar_plan(
-  usp_master_programme_base_link = "https://www.fsp.usp.br/pos/",
-  tar_target(
-    name = usp_master_programme_links,
-    command = usp_get_master_programme_links(
-      .url = usp_master_programme_base_link
-    )
-  )
-)
+# usp_data_targets <- tar_plan(
+#   usp_master_programme_base_link = "https://www.fsp.usp.br/pos/",
+#   tar_target(
+#     name = usp_master_programme_links,
+#     command = usp_get_master_programme_links(
+#       .url = usp_master_programme_base_link
+#     )
+#   )
+# )
 
 
 ## University of Ottawa public health ----
@@ -483,6 +483,19 @@ kcl_data_targets <- tar_plan(
     name = kcl_master_programme_links,
     command = kcl_get_master_programme_links(
       .url = kcl_master_programme_base_link
+    )
+  )
+)
+
+
+## Karolinska Institutet ----
+
+karol_data_targets <- tar_plan(
+  karol_master_programme_base_link = "https://education.ki.se/bachelors-masters-studies/masters-programmes",
+  tar_target(
+    name = karol_master_programme_links,
+    command = karol_get_master_programme_links(
+      .url = karol_master_programme_base_link
     )
   )
 )
