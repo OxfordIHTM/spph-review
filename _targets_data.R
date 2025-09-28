@@ -499,3 +499,16 @@ karol_data_targets <- tar_plan(
     )
   )
 )
+
+
+## University of British Columbia ----
+
+ubc_data_targets <- tar_plan(
+  ubc_master_programme_base_link = "https://spph.ubc.ca/education/",
+  tar_target(
+    name = ubc_master_programme_links,
+    command = ubc_get_master_programme_links(
+      .url = ubc_master_programme_base_link
+    )
+  )
+)
