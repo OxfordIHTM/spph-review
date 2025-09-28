@@ -20,7 +20,7 @@ ucla_get_master_programme_links <- function(base_url, page) {
   programme_link <- current_session |>
     rvest::html_elements(css = ".program-card__options .program-card__link a") |>
     rvest::html_attr(name = "href") |>
-    (\(x) file.path("https://ph.ucla.edu", x))()
+    (\(x) paste0("https://ph.ucla.edu", x))()
 
   tibble::tibble(
     department = department_name,
