@@ -534,3 +534,16 @@ queen_data_targets <- tar_plan(
     )
   )
 )
+
+
+## University of Oxford ----
+
+ox_data_targets <- tar_plan(
+  ox_master_programme_base_link = "https://www.ox.ac.uk/admissions/graduate/courses/courses-a-z-listing?keywords=Public+Health",
+  tar_target(
+    name = ox_master_programme_links,
+    command = ox_get_master_programme_links(
+      .url = ox_master_programme_base_link
+    )
+  )
+)
