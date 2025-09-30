@@ -36,6 +36,7 @@ mich_get_master_programme_links <- function(.url) {
   programme_link[1:12] <- paste0("https://sph.umich.edu", programme_link[1:12])
 
   tibble::tibble(
+    institution = "University of Michigan School of Public Health",
     department = NA_character_,
     degree = degree_name,
     url = programme_link
