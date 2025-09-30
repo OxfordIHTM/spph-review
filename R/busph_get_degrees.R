@@ -45,5 +45,9 @@ busph_get_master_programme_links <- function(.url) {
       degree = degree_name,
       url = programme_link
     )
-  )
+  ) |>
+    dplyr::mutate(
+      institution = "Boston University School of Public Health",
+      .before = department
+    )
 }
