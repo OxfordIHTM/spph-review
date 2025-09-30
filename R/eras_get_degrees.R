@@ -16,6 +16,7 @@ eras_get_master_programme_links <- function(.url) {
     (\(x) paste0("https://www.eur.nl", x))()
 
   tibble::tibble(
+    institution = "Erasmus University Rotterdam",
     department = NA_character_,
     degree = degree_name,
     url = programme_link
