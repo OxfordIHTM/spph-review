@@ -4,7 +4,8 @@
 
 unsw_get_master_programme_links <- function() {
   tibble::tribble(
-    ~department, ~degree, ~url,
+    ~institution, ~department, ~degree, ~url,
+    "University of New South Wales",
     NA_character_,
     "Master of Public Health",
     "https://www.unsw.edu.au/study/postgraduate/master-of-public-health"
