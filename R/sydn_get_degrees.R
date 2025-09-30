@@ -20,5 +20,6 @@ sydn_get_master_programme_links <- function(.url) {
     department = NA_character_,
     degree = degree_name,
     url = programme_link
-  )
+  ) |>
+    dplyr::filter(!grepl(pattern = "Diploma", x = degree))
 }
