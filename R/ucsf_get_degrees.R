@@ -92,5 +92,9 @@ ucsf_get_master_programme_links <- function(.url) {
       "https://www.usfca.edu/nursing/programs/graduate/public-health/applied-practice-integrated-learning-experience"
     )
   ) |>
-    (\(x) x[c(3, 5:8, 13:14), ])()
+    (\(x) x[c(3, 5:8, 13:14), ])() |>
+    dplyr::mutate(
+      institution = "University of California, San Francisco",
+      .before = department
+    )
 }
