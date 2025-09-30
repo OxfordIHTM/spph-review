@@ -54,5 +54,9 @@ gsph_get_master_programme_links <- function(.url) {
       degree = degree_name,
       url = programme_link
     )
-  )
+  ) |>
+    dplyr::mutate(
+      institution = "University of North Carolina Gillings School of Global Public Health",
+      .before = department
+    )
 }
