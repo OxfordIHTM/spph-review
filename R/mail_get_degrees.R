@@ -15,6 +15,7 @@ mail_get_master_programme_links <- function(.url) {
     (\(x) paste0("https://www.publichealth.columbia.edu", x))()
 
   set1 <- tibble::tibble(
+    institution = "Columbia University Mailman School of Public Health",
     department = NA_character_,
     degree = degree_name,
     url = programme_link
@@ -44,6 +45,7 @@ mail_get_master_programme_links <- function(.url) {
     (\(x) paste0("https://www.publichealth.columbia.edu", x))()
 
   set2 <- tibble::tibble(
+    institution = "Columbia University Mailman School of Public Health",
     department = sub_department,
     degree = sub_degree,
     url = sub_link
