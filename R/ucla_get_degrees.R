@@ -23,6 +23,7 @@ ucla_get_master_programme_links <- function(base_url, page) {
     (\(x) paste0("https://ph.ucla.edu", x))()
 
   tibble::tibble(
+    institution = "UCLA Fielding School of Public Health",
     department = department_name,
     degree = degree_name,
     url = programme_link
