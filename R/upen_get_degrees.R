@@ -17,6 +17,7 @@ upen_get_master_programme_links <- function(.url) {
     (\(x) x[c(1, 3, 5:6, 8, 10, 12:13, 15:16, 18, 21, 23, 25)])()
 
   tibble::tibble(
+    institution = "University of Pennsylvania",
     department = NA_character_,
     degree = degree_name,
     url = programme_link
