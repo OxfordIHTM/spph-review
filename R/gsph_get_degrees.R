@@ -8,16 +8,15 @@ gsph_get_master_programme_links <- function(.url) {
   mph_degree_name <- current_session |>
     rvest::html_elements(css = ".altblocks_content h3") |>
     rvest::html_text2() |>
-    (\(x) x[1:3])() |>
-    gsub(pattern = "\\s\\([A-Z]{2,}\\)", x = _, replacement = "") |>
-    (\(x) c(x, x[3]))()
+    (\(x) x[1:2])() |>
+    gsub(pattern = "\\s\\([A-Z]{2,}\\)", x = _, replacement = "")
 
   links <- current_session |>
     rvest::html_elements(css = ".altblocks_content-wrapper .w-button") |>
     rvest::html_attr(name = "href")
 
   mph_programme_link <- links |>
-    (\(x) x[1:4])()
+    (\(x) x[1:2])()
 
   mph <- tibble::tibble(
     department = NA_character_,
