@@ -21,6 +21,7 @@ usp_get_master_programme_links <- function(.url,
     (\(x) x[1:6])()
 
   tibble::tibble(
+    institution = "University of Sao Paulo School of Public Health",
     department = NA_character_,
     degree = degree_name,
     url = programme_link
