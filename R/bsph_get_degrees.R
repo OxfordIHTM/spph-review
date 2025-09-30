@@ -122,7 +122,11 @@ bsph_get_master_programme_links <- function(.url) {
     url  = set5_programme_link
   )
 
-  rbind(set1, set2, set3, set4, set5)
+  rbind(set1, set2, set3, set4, set5) |>
+    dplyr::mutate(
+      institution = "Johns Hopkins Bloomberg School of Public Health",
+      .before = department
+    )
 }
 
 
