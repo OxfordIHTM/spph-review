@@ -22,6 +22,7 @@ emory_get_master_programme_links <- function(base_url, page) {
     rvest::html_attr(name = "href")
 
   tibble::tibble(
+    institution = "Emory University Rollins School of Public Health",
     department = NA_character_,
     degree = degree_name,
     url = programme_link
