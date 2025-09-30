@@ -47,6 +47,7 @@ dlsph_get_master_programme_links <- function(.url) {
     rvest::html_attr(name = "href")
 
   tibble::tibble(
+    institution = "University of Toronto Dalla Lana School of Public Health",
     department = NA_character_,
     degree = degree_name,
     url = programme_link
