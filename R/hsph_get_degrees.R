@@ -28,6 +28,7 @@ hsph_get_master_programme_links <- function(.url) {
     rvest::html_attr(name = "href")
 
   tibble::tibble(
+    institution = "Harvard School of Public Health",
     department = NA_character_,
     degree = paste(degree_title, degree_name, sep = " in "),
     url = programme_link
