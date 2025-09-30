@@ -22,6 +22,7 @@ lshtm_get_master_programme_links <- function(.url,
     rvest::html_attr(name = "href")
 
   tibble::tibble(
+    institution = "London School of Hygiene and Tropical Medicine",
     department = NA_character_,
     degree = degree_name,
     url = programme_link
