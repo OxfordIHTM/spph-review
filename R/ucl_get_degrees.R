@@ -28,6 +28,7 @@ ucl_get_master_programme_links <- function(.url) {
     (\(x) x[38:42])()
 
   tibble::tibble(
+    institution = "University College London",
     department = "Institute of Epidemiology and Health Care",
     degree = degree_name,
     url = programme_link
