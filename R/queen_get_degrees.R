@@ -15,6 +15,7 @@ queen_get_master_programme_links <- function(.url) {
     (\(x) paste0("https://study.uq.edu.au", x))()
 
   tibble::tibble(
+    institution = "University of Queensland School of Public Health",
     department = NA_character_,
     degree = degree_name,
     url = programme_link
