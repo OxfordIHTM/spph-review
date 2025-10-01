@@ -242,6 +242,14 @@ mail_data_targets <- tar_plan(
 
 mich_data_targets <- tar_plan(
   mich_master_programme_base_link = "https://sph.umich.edu/admissions/programs-degrees/masters/degrees-and-requirements.html",
+  mich_gdrive_id = "1gfVBU51_0pZbJ_tWcLSVknAwtCWmJXD6",
+  tar_target(
+    name = mich_master_programme_html_file,
+    command = mich_gdrive_download(
+      gdrive_id = mich_gdrive_id, file_path = "data-raw/michigan/umichigan.html"
+    ),
+    format = "file"
+  ),
   tar_target(
     name = mich_master_programme_links,
     command = mich_get_master_programme_links(
