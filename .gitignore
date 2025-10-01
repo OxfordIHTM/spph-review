@@ -14,6 +14,7 @@ data-raw/the/*.pdf
 data-raw/qs/*.xlsx
 data-raw/usp/
 data-raw/lshtm/
+data-raw/michigan/
 
 data/
 !data/.gitkeep

@@ -19,6 +19,7 @@ ox_get_master_programme_links <- function(.url) {
     (\(x) paste0("https://www.ox.ac.uk", x))()
 
   tibble::tibble(
+    institution = "University of Oxford",
     department = department_name,
     degree = degree_name,
     url = programme_link
