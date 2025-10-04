@@ -554,6 +554,10 @@ ox_data_targets <- tar_plan(
     command = ox_get_master_programme_links(
       .url = ox_master_programme_base_link
     )
+  ),
+  tar_target(
+    name = ox_master_programme_store,
+    command = process_degrees()
   )
 )
 

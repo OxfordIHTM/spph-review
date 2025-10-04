@@ -11,7 +11,7 @@ ph_store_targets <- tar_plan(
   ph_store_location = "phdegree.duckdb",
   ph_store = ragnar::ragnar_store_create(
     location = ph_store_location,
-    embed = \(x) ragnar::embed_ollama(x = x, model = llm_embed_model),
+    embed = \(x) ragnar::embed_ollama(x = x, model = "snowflake-arctic-embed2:568m"),
     overwrite = TRUE
   )
 )
