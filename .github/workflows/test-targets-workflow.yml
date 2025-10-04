@@ -37,5 +37,5 @@ jobs:
         
       - name: Run workflow
         run: |
-          targets::tar_make()
+          targets::tar_make(ph_master_programme_list)
         shell: Rscript {0}

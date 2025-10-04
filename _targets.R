@@ -17,6 +17,10 @@ googlesheets4::gs4_deauth()
 source("_targets_data.R")
 
 
+## RAG targets ----
+source("_targets_rag.R")
+
+
 ## Processing targets ----
 processing_targets <- tar_plan(
   
