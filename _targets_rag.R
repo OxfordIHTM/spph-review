@@ -22,9 +22,8 @@ ph_store_targets <- tar_plan(
 ph_master_rag_targets <- tar_plan(
   tar_target(
     name = ph_master_rag,
-    command = process_degree_list(
+    command = process_degrees(
       .url = ph_master_programme_links, store = ph_store
-    ),
-    pattern = map(ph_master_programme_links)
+    )
   )
 )
