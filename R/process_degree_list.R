@@ -5,11 +5,13 @@
 process_degree <- function(.url, store) {
   x <- try(rvest::session(.url), silent = TRUE)
 
-  if (!httr::http_error(.url) | !is(x, "try-error")) {
-    message("Reading: ", .url)
-    ragnar::read_as_markdown(.url) |>
-      ragnar::markdown_chunk() |>
-      ragnar::ragnar_store_insert(store = store, chunks = _)
+  if (!is(x, "try-error")) {
+    if (!httr::http_error(.url)) {
+      message("Reading: ", .url)
+      ragnar::read_as_markdown(.url) |>
+        ragnar::markdown_chunk() |>
+        ragnar::ragnar_store_insert(store = store, chunks = _)
+    }
   }
 }
 

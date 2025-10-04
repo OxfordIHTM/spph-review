@@ -24,5 +24,5 @@ ubc_get_master_programme_links <- function(.url) {
     degree = degree_name,
     url = programme_link
   ) |>
-    dplyr::filter(!grepl(pattern = "Doctor", x = degree))
+    dplyr::filter(!grepl(pattern = "Doctor|Residency", x = degree))
 }
