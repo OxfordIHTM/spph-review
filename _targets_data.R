@@ -238,7 +238,8 @@ mich_data_targets <- tar_plan(
   tar_target(
     name = mich_master_programme_links,
     command = mich_get_master_programme_links(
-      .url = mich_master_programme_base_link
+      .url = mich_master_programme_base_link, 
+      html = mich_master_programme_html_file
     )
   )
 )
