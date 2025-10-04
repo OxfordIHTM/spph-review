@@ -4,13 +4,8 @@
 ## Setup data store for RAG ----
 
 ph_store_targets <- tar_plan(
-  tar_target(
-    name = llm_embed_model,
-    command = select_llm_embed_model(src = "embed2:568m")
-  ),
-  ph_store_location = "phdegree.duckdb",
   ph_store = ragnar::ragnar_store_create(
-    location = ph_store_location,
+    location = "phdegree.duckdb",
     embed = \(x) ragnar::embed_ollama(x = x, model = "snowflake-arctic-embed2:568m"),
     overwrite = TRUE
   )
