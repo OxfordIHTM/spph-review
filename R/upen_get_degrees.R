@@ -16,6 +16,8 @@ upen_get_master_programme_links <- function(.url) {
     grepv(pattern = "https", x = _) |>
     (\(x) x[c(1, 3, 5:6, 8, 10, 12:13, 15:16, 18, 21, 23, 25)])()
 
+  programme_link[2] <- "https://catalog.upenn.edu/graduate/programs/biomedical-informatics-mbmi/"
+
   tibble::tibble(
     institution = "University of Pennsylvania",
     department = NA_character_,
@@ -23,3 +25,4 @@ upen_get_master_programme_links <- function(.url) {
     url = programme_link
   )
 }
+
