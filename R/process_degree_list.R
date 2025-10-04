@@ -4,8 +4,9 @@
 
 process_degree <- function(.url, store) {
   url_ok <- try(!httr::http_error(.url), silent = TRUE)
+  url_can_read <- try(ragnar::read_as_markdown(.url), silent = TRUE)
 
-  if (!is(url_ok, "try-error")) {
+  if (!is(url_ok, "try-error") & !is(url_can_read, "try-error")) {
     if (url_ok) {
       message("Reading: ", .url)
       ragnar::read_as_markdown(.url) |>
@@ -21,5 +22,7 @@ process_degree <- function(.url, store) {
 #' 
 
 process_degrees <- function(.url, store) {
+  
+
   lapply(X = .url, FUN = process_degree, store = store)
 }
