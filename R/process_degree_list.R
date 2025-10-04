@@ -5,11 +5,13 @@
 process_degree <- function(.url, store) {
   url_ok <- try(!httr::http_error(.url), silent = TRUE)
 
-  if (!is(url_ok, "try-error") & url_ok) {
-    message("Reading: ", .url)
-    ragnar::read_as_markdown(.url) |>
-      ragnar::markdown_chunk() |>
-      ragnar::ragnar_store_insert(store = store, chunks = _)
+  if (!is(url_ok, "try-error")) {
+    if (url_ok) {
+      message("Reading: ", .url)
+      ragnar::read_as_markdown(.url) |>
+        ragnar::markdown_chunk() |>
+        ragnar::ragnar_store_insert(store = store, chunks = _)
+    }
   }
 }
 
