@@ -26,3 +26,4 @@ phdegree_store <- ragnar::ragnar_store_create(
 
 process_degrees(.url = ph_master_programme_links, store = phdegree_store)
 
+ragnar_store_build_index(phdegree_store)
