@@ -1,0 +1,18 @@
+#'
+#' Process degree for RAG
+#' 
+
+process_degree <- function(.url, store) {
+  ragnar::read_as_markdown(.url) |>
+    ragnar::markdown_chunk() |>
+    ragnar::ragnar_store_insert(store = store, chunks = _)
+}
+
+
+#'
+#' Process degrees for RAG 
+#' 
+
+process_degrees <- function(.url, store) {
+  lapply(X = .url, FUN = process_degree, store = store)
+}

@@ -1,21 +1,6 @@
 # Data targets -----------------------------------------------------------------
 
 
-## Setup data store for RAG ----
-
-# db_store_targets <- tar_plan(
-#   tar_target(
-#     name = llm_embed_model,
-#     command = select_llm_embed_model(src = "embed2:568m")
-#   ),
-#   db_store_location = "spph.duckdb",
-#   db_store = ragnar::ragnar_store_create(
-#     location = db_store_location,
-#     embed = \(x) ragnar::embed_ollama(x = x, model = llm_embed_model)
-#   )
-# )
-
-
 ## World Bank data ----
 
 wb_data_targets <- tar_plan(
@@ -253,7 +238,8 @@ mich_data_targets <- tar_plan(
   tar_target(
     name = mich_master_programme_links,
     command = mich_get_master_programme_links(
-      .url = mich_master_programme_base_link
+      .url = mich_master_programme_base_link, 
+      html = mich_master_programme_html_file
     )
   )
 )
@@ -568,5 +554,36 @@ ox_data_targets <- tar_plan(
     command = ox_get_master_programme_links(
       .url = ox_master_programme_base_link
     )
+  ),
+  tar_target(
+    name = ox_master_programme_store,
+    command = process_degrees()
   )
+)
+
+
+## Concatenate degree lists ----
+
+degree_list_targets <- tar_plan(
+  tar_target(
+    name = ph_master_programme_list,
+    command = rbind(
+      ox_master_programme_links, queen_master_programme_links,
+      ubc_master_programme_links, karol_master_programme_links,
+      kcl_master_programme_links, brist_master_programme_links,
+      melb_master_programme_links, busph_master_programme_links,
+      uott_master_programme_links, usp_master_programme_links,
+      eras_master_programme_links, unsw_master_programme_links,
+      stan_master_programme_links, upen_master_programme_links,
+      imp_master_programme_links, emory_master_programme_links,
+      hku_master_programme_links, sydn_master_programme_links,
+      gsph_master_programme_links, wsph_master_programme_links,
+      dlsph_master_programme_links, ucsf_master_programme_links,
+      bsph_master_programme_links, ucl_master_programme_links,
+      mich_master_programme_links, mail_master_programme_links,
+      ysph_master_programme_links, lshtm_master_programme_links,
+      hsph_master_programme_links, ucla_master_programme_links
+    )
+  ),
+  ph_master_programme_links = ph_master_programme_list$url
 )
