@@ -4,9 +4,9 @@
 
 usp_get_master_programme_links <- function(.url,
                                            html = "data-raw/usp/usp.html") {
-  if (!httr::http_error(.url)) {
-    current_session <- rvest::session(url = .url)
-  } else {
+  current_session <- try(rvest::session(url = .url))
+  
+  if (is(current_session, "try-error")) {
     current_session <- rvest::read_html(html)
   }
 
