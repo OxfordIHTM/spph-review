@@ -6,6 +6,13 @@ suppressPackageStartupMessages(source("packages.R"))
 for (f in list.files(here::here("R"), full.names = TRUE)) source (f)
 
 
+## Build options ----
+
+### Google authorisation ----
+googledrive::drive_deauth()
+googlesheets4::gs4_deauth()
+
+
 ## Load targets ----
 
 tar_load(ph_master_programme_links)
@@ -39,8 +46,8 @@ ragnar_store_build_index(phdegree_store)
 
 ## Send duckdb to Google Drive ----
 
-db_gdrive_upload(
-  db = "phdegree.duckdb",
-  name = "phdegree.duckdb",
-  gdrive_id = db_gdrive_id
-)
+# db_gdrive_upload(
+#   db = "phdegree.duckdb",
+#   name = "phdegree.duckdb",
+#   gdrive_id = db_gdrive_id
+# )
