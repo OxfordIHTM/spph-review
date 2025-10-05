@@ -9,5 +9,6 @@ ph_store_targets <- tar_plan(
 
 ## Degree list RAG targets ----
 
-ph_master_rag_targets <- tar_plan(
+### Oxford RAG ----
+ox_master_rag_targets <- tar_plan(
 )

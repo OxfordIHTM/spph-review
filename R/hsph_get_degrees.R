@@ -39,5 +39,19 @@ hsph_get_master_programme_links <- function(.url) {
         pattern = "Doctor of Philosophy|Doctor|Dual|Joint", 
         negate = TRUE)
     ) |>
-    (\(x) { x$url[17] <- NA_character_; x })()
+    dplyr::mutate(
+      degree = dplyr::case_when(
+        degree == "Master of Public Health in Generalist" ~ "Master of Public Health Generalist",
+        degree == "Master of Science in Generalist" ~ "Master of Science Generalist",
+        degree == "Master in Health Care Management in Health Management" ~ "Master in Health Care Management",
+        .default = degree
+      )
+    ) |>
+    (\(x) 
+      { 
+        x$url[17] <- NA_character_
+        x$url[20] <- NA_character_
+        x 
+      }
+    )()
 }

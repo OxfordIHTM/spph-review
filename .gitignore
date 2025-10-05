@@ -11,6 +11,8 @@ README.html
 spph.duckdb
 phdegree.duckdb
 phdegree.duckdb.wal
+*.duckdb
+*.duckdb.wal
 
 data-raw/the/*.pdf
 data-raw/qs/*.xlsx
