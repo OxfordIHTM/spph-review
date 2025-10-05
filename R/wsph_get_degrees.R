@@ -21,5 +21,6 @@ wsph_get_master_programme_links <- function(.url) {
     degree = degree_name,
     url = programme_link
   ) |>
-    dplyr::filter(grepl(pattern = "Master", x = degree))
+    dplyr::filter(grepl(pattern = "Master", x = degree)) |>
+    (\(x) x[c(1:7, 9:21, 23:24), ])()
 }
