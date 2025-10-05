@@ -38,5 +38,6 @@ hsph_get_master_programme_links <- function(.url) {
         string = degree, 
         pattern = "Doctor of Philosophy|Doctor|Dual|Joint", 
         negate = TRUE)
-    )
+    ) |>
+    (\(x) { x$url[17] <- NA_character_; x })()
 }
