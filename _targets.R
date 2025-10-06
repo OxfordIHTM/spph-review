@@ -37,6 +37,10 @@ analysis_targets <- tar_plan(
 source("_targets_output.R")
 
 
+## Release targets ----
+source("_targets_release.R")
+
+
 ## Reporting targets ----
 report_targets <- tar_plan(
   
