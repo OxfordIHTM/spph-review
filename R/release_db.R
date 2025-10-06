@@ -10,7 +10,7 @@ release_rag_db <- function(file, name) {
     sep = "-"
   )
 
-  piggyback::pb_release_create(tag = tag, body = "Database release")
+  piggyback::pb_new_release(tag = tag, body = "Database release")
 
   piggyback::pb_upload(file = file, name = name)
 
