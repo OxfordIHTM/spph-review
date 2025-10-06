@@ -33,14 +33,27 @@ phdegree_store <- ragnar::ragnar_store_create(
 ## Ingest degree information ----
 
 ### Set 1 ----
-process_degrees(.url = ph_master_programme_links[1:111], store = phdegree_store)
+process_degrees(.url = ph_master_programme_links[1:50], store = phdegree_store)
 
 ### Set 2 ----
-process_degrees(.url = ph_master_programme_links[112:222], store = phdegree_store)
+process_degrees(.url = ph_master_programme_links[51:100], store = phdegree_store)
 
 ### Set 3 ----
-process_degrees(.url = ph_master_programme_links[223:333], store = phdegree_store)
+process_degrees(.url = ph_master_programme_links[101:150], store = phdegree_store)
 
+### Set 4 ----
+process_degrees(.url = ph_master_programme_links[151:200], store = phdegree_store)
+
+### Set 5 ----
+process_degrees(.url = ph_master_programme_links[201:250], store = phdegree_store)
+
+### Set 6 ----
+process_degrees(.url = ph_master_programme_links[251:300], store = phdegree_store)
+
+### Set 7 ----
+process_degrees(.url = ph_master_programme_links[301:333], store = phdegree_store)
+
+### Index store ----
 ragnar_store_build_index(phdegree_store)
 
 
@@ -51,3 +64,8 @@ ragnar_store_build_index(phdegree_store)
 #   name = "phdegree.duckdb",
 #   gdrive_id = db_gdrive_id
 # )
+
+
+## Release duckdb database to GitHub ----
+
+#release_rag_db(file = "phdegree.duckdb", name = "phdegree.duckdb")

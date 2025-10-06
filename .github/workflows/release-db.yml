@@ -1,0 +1,45 @@
+name: release database
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release-database:
+    runs-on: self-hosted
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      # - name: Install system dependencies
+      #   run: |
+      #     apt-get update && apt-get install -y --no-install-recommends \
+      #     libxt6 libglpk-dev libpoppler-cpp-dev
+          
+      # - name: Trust git repo
+      #   run: |
+      #     git config --global --add safe.directory /__w/spph-review/spph-review
+          
+      - name: Install packages from renv.lock (with cache)
+        if: ${{ !env.ACT }}  
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 2
+
+      - name: Install packages from renv.lock (local, no cache)
+        if: ${{ env.ACT }}
+        run: |
+          renv::restore()
+        shell: Rscript {0}
+        
+      - name: Run workflow
+        run: |
+          targets::tar_make()
+          source("setup_rag.R")
+        shell: Rscript {0}
+
+      - name: Create release
+        run: |
+          targets::tar_make(gha_db_release)
+        shell: Rscript {0}
+        
