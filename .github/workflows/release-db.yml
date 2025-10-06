@@ -32,9 +32,13 @@ jobs:
           renv::restore()
         shell: Rscript {0}
         
-      - name: Run workflow
+      - name: Compile public health degree list
         run: |
-          targets::tar_make()
+          targets::tar_make(ph_master_programme_links)
+        shell: Rscript {0}
+
+      - name: Setup RAG database
+        run: |
           source("setup_rag.R")
         shell: Rscript {0}
 

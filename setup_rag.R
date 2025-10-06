@@ -33,24 +33,31 @@ phdegree_store <- ragnar::ragnar_store_create(
 ## Ingest degree information ----
 
 ### Set 1 ----
+message("Reading information from degrees 1 to 50")
 process_degrees(.url = ph_master_programme_links[1:50], store = phdegree_store)
 
 ### Set 2 ----
+message("Reading information from degrees 51 to 100")
 process_degrees(.url = ph_master_programme_links[51:100], store = phdegree_store)
 
 ### Set 3 ----
+message("Reading information from degrees 101 to 150")
 process_degrees(.url = ph_master_programme_links[101:150], store = phdegree_store)
 
 ### Set 4 ----
+message("Reading information from degrees 151 to 200")
 process_degrees(.url = ph_master_programme_links[151:200], store = phdegree_store)
 
 ### Set 5 ----
+message("Reading information from degrees 201 to 250")
 process_degrees(.url = ph_master_programme_links[201:250], store = phdegree_store)
 
 ### Set 6 ----
+message("Reading information from degrees 251 to 300")
 process_degrees(.url = ph_master_programme_links[251:300], store = phdegree_store)
 
 ### Set 7 ----
+message("Reading information from degrees 301 to 333")
 process_degrees(.url = ph_master_programme_links[301:333], store = phdegree_store)
 
 ### Index store ----
