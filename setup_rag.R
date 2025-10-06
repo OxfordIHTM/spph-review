@@ -21,7 +21,7 @@ tar_load(db_gdrive_id)
 
 ## Create store ----
 
-phdegree_store_location <- "phdegree.duckdb"
+phdegree_store_location <- "ph_degree.duckdb"
 
 phdegree_store <- ragnar::ragnar_store_create(
   location = phdegree_store_location,
