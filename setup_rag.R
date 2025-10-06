@@ -21,7 +21,7 @@ tar_load(db_gdrive_id)
 
 ## Create store ----
 
-phdegree_store_location <- "phdegree.duckdb"
+phdegree_store_location <- "ph_degree.duckdb"
 
 phdegree_store <- ragnar::ragnar_store_create(
   location = phdegree_store_location,
@@ -75,4 +75,4 @@ ragnar_store_build_index(phdegree_store)
 
 ## Release duckdb database to GitHub ----
 
-#release_rag_db(file = "phdegree.duckdb", name = "phdegree.duckdb")
+#release_rag_db(file = "ph_degree.duckdb", name = "ph_degree.duckdb")
