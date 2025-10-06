@@ -26,3 +26,25 @@ ox_get_master_programme_links <- function(.url) {
   ) |>
     (\(x) x[c(1, 8:9, 14:16, 19, 21, 23:24, 47:48, 51), ])()
 }
+
+
+#'
+#' Setup RAG store for Oxford University degrees
+#' 
+
+ox_create_store <- function(.url, store) {
+  ragnar::read_as_markdown(.url) |>
+    ragnar::markdown_chunk() |>
+    ragnar::ragnar_store_insert(store = store, chunks = _)
+
+  ragnar::ragnar_store_build_index(store)
+}
+
+
+#'
+#' Retrieve information from Oxford RAG store
+#' 
+
+ox_retrieve_info <- function() {
+  
+}

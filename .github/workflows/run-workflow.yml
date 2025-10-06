@@ -35,4 +35,5 @@ jobs:
       - name: Run workflow
         run: |
           targets::tar_make()
+          source("setup_rag.R")
         shell: Rscript {0}
