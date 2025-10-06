@@ -75,4 +75,4 @@ ragnar_store_build_index(phdegree_store)
 
 ## Release duckdb database to GitHub ----
 
-#release_rag_db(file = "phdegree.duckdb", name = "phdegree.duckdb")
+#release_rag_db(file = "ph_degree.duckdb", name = "ph_degree.duckdb")
