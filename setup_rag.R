@@ -16,7 +16,6 @@ googlesheets4::gs4_deauth()
 ## Load targets ----
 
 tar_load(ph_master_programme_links)
-tar_load(db_gdrive_id)
 
 
 ## Create store ----
