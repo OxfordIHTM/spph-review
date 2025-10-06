@@ -35,25 +35,43 @@ phdegree_store <- ragnar::ragnar_store_create(
 message("Reading information from degrees 1 to 50")
 process_degrees(.url = ph_master_programme_links[1:50], store = phdegree_store)
 
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
+
 ### Set 2 ----
 message("Reading information from degrees 51 to 100")
 process_degrees(.url = ph_master_programme_links[51:100], store = phdegree_store)
+
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
 
 ### Set 3 ----
 message("Reading information from degrees 101 to 150")
 process_degrees(.url = ph_master_programme_links[101:150], store = phdegree_store)
 
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
+
 ### Set 4 ----
 message("Reading information from degrees 151 to 200")
 process_degrees(.url = ph_master_programme_links[151:200], store = phdegree_store)
+
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
 
 ### Set 5 ----
 message("Reading information from degrees 201 to 250")
 process_degrees(.url = ph_master_programme_links[201:250], store = phdegree_store)
 
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
+
 ### Set 6 ----
 message("Reading information from degrees 251 to 300")
 process_degrees(.url = ph_master_programme_links[251:300], store = phdegree_store)
+
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
 
 ### Set 7 ----
 message("Reading information from degrees 301 to 333")
