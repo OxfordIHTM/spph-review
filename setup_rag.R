@@ -77,41 +77,71 @@ Sys.sleep(30)
 message("Reading information from degrees 121 to 140")
 process_degrees(.url = ph_master_programme_links[121:140], store = phdegree_store)
 
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
+
 ### Set 8 ----
 message("Reading information from degrees 141 to 160")
 process_degrees(.url = ph_master_programme_links[141:160], store = phdegree_store)
+
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
 
 ### Set 9 ----
 message("Reading information from degrees 161 to 180")
 process_degrees(.url = ph_master_programme_links[161:180], store = phdegree_store)
 
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
+
 ### Set 10 ----
 message("Reading information from degrees 181 to 200")
 process_degrees(.url = ph_master_programme_links[181:200], store = phdegree_store)
+
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
 
 ### Set 11 ----
 message("Reading information from degrees 201 to 220")
 process_degrees(.url = ph_master_programme_links[201:220], store = phdegree_store)
 
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
+
 ### Set 12 ----
 message("Reading information from degrees 221 to 240")
 process_degrees(.url = ph_master_programme_links[221:240], store = phdegree_store)
+
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
 
 ### Set 13 ----
 message("Reading information from degrees 241 to 260")
 process_degrees(.url = ph_master_programme_links[241:260], store = phdegree_store)
 
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
+
 ### Set 14 ----
 message("Reading information from degrees 261 to 280")
 process_degrees(.url = ph_master_programme_links[261:280], store = phdegree_store)
+
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
 
 ### Set 15 ----
 message("Reading information from degrees 281 to 300")
 process_degrees(.url = ph_master_programme_links[281:300], store = phdegree_store)
 
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
+
 ### Set 16 ----
 message("Reading information from degrees 301 to 320")
 process_degrees(.url = ph_master_programme_links[301:320], store = phdegree_store)
+
+message("Pausing ingest for 30 seconds")
+Sys.sleep(30)
 
 ### Set 17 ----
 message("Reading information from degrees 321 to 333")
