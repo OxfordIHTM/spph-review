@@ -581,5 +581,9 @@ degree_list_targets <- tar_plan(
       hsph_master_programme_links, ucla_master_programme_links
     )
   ),
-  ph_master_programme_links = ph_master_programme_list$url
+  tar_target(
+    name = ph_master_programme_links,
+    command = ph_master_programme_list |>
+      dplyr::pull(url)
+  )
 )
