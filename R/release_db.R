@@ -12,7 +12,11 @@ release_rag_db <- function(file, name) {
 
   releases <- piggyback::pb_releases()
 
-  if (!grepl(pattern = tag, x = releases$release_name)) {
+  if (ncol(releases) == 0) {
+    piggyback::pb_new_release(tag = tag, body = "Database release")
+  }
+  
+  if (!tag %in% releases$release_name) {
     piggyback::pb_new_release(tag = tag, body = "Database release")
   }
 
