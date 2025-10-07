@@ -25,11 +25,11 @@ process_degree <- function(.url, store, sleep = NULL) {
 #' Process degrees for RAG 
 #' 
 
-process_degrees <- function(.url, store) {
+process_degrees <- function(.url, store, sleep = NULL) {
   # x <- seq_len(length(.url))
   # size <- length(.url)
 
   # .url <- .url[sample(x = x, size = size)]
 
-  lapply(X = .url, FUN = process_degree, store = store)
+  lapply(X = .url, FUN = process_degree, store = store, sleep = sleep)
 }
