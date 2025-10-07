@@ -26,10 +26,10 @@ process_degree <- function(.url, store, sleep = NULL) {
 #' 
 
 process_degrees <- function(.url, store) {
-  x <- seq_len(length(.url))
-  size <- length(.url)
+  # x <- seq_len(length(.url))
+  # size <- length(.url)
 
-  .url <- .url[sample(x = x, size = size)]
+  # .url <- .url[sample(x = x, size = size)]
 
   lapply(X = .url, FUN = process_degree, store = store)
 }

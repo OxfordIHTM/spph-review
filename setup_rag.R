@@ -147,7 +147,7 @@ phdegree_store <- ragnar::ragnar_store_create(
 # message("Reading information from degrees 321 to 333")
 # process_degrees(.url = ph_master_programme_links[321:333], store = phdegree_store)
 
-process_degrees(.url = ph_master_programme_links, store = phdegree_store)
+process_degrees(.url = ph_master_programme_links, store = phdegree_store, sleep = 10)
 
 ### Index store ----
 ragnar_store_build_index(phdegree_store)
