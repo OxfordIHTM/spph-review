@@ -2,7 +2,7 @@
 #' Process degree for RAG
 #' 
 
-process_degree <- function(.url, store) {
+process_degree <- function(.url, store, sleep = NULL) {
   url_ok <- try(!httr::http_error(.url), silent = TRUE)
   url_can_read <- try(ragnar::read_as_markdown(.url), silent = TRUE)
 
@@ -14,6 +14,10 @@ process_degree <- function(.url, store) {
         ragnar::ragnar_store_insert(store = store, chunks = _)
     }
   }
+
+  if (!is.null(sleep)) {
+    Sys.sleep(time = sleep)
+  }
 }
 
 
@@ -22,7 +26,10 @@ process_degree <- function(.url, store) {
 #' 
 
 process_degrees <- function(.url, store) {
-  
+  x <- seq_len(length(.url))
+  size <- length(.url)
+
+  .url <- .url[sample(x = x, size = size)]
 
   lapply(X = .url, FUN = process_degree, store = store)
 }
