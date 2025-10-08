@@ -20,7 +20,7 @@ tar_load(ph_master_programme_links)
 
 ## Create store ----
 
-phdegree_store_location <- "ph_degree.duckdb"
+phdegree_store_location <- "spph_review.duckdb"
 
 phdegree_store <- ragnar::ragnar_store_create(
   location = phdegree_store_location,
