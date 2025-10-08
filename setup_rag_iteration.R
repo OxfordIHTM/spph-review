@@ -9,7 +9,7 @@
 
 #tar_load(ph_master_programme_links)
 
-process_degrees(.url = ph_master_programme_links[88:341], store = phdegree_store)
+process_degrees(.url = ph_master_programme_links[156:341], store = phdegree_store)
 
 ### Index store ----
 ragnar_store_build_index(phdegree_store)
