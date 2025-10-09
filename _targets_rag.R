@@ -3,13 +3,21 @@
 
 ## Setup data store for RAG ----
 
-ph_store_targets <- tar_plan(
-  db_gdrive_id = "1lfY9-WEuMO0te6twZSH2a0xqwzba6mkq"
+spph_store_targets <- tar_plan(
+  spph_review_store_name = "spph_review.duckdb",
+  tar_target(
+    name = spph_review_store_location,
+    command = spph_get_database(db_name = spph_review_store_name),
+    format = "file"
+  ),
+  tar_target(
+    name = spph_review_store,
+    command = duckdb::dbConnect(
+      drv = duckdb::duckdb(), 
+      dbdir = spph_review_store_location,
+      read_only = TRUE
+    )
+  )
 )
 
 
-## Degree list RAG targets ----
-
-### Oxford RAG ----
-ox_master_rag_targets <- tar_plan(
-)

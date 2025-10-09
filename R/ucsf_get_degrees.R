@@ -75,7 +75,7 @@ ucsf_get_master_programme_links <- function(.url) {
     current_session |>
       rvest::html_elements(css = ".ck-widget .column2 a") |>
       rvest::html_attr(name = "href") |>
-      (\(x) x[10:15])() |>
+      (\(x) x[10:14])() |>
       (\(x) ifelse(grepl(pattern = "https", x = x), x, paste0("https://graduate.ucsf.edu/academics/masters-degree", x)))()
   )
 
