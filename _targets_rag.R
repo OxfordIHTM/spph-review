@@ -12,12 +12,17 @@ spph_store_targets <- tar_plan(
   ),
   tar_target(
     name = spph_review_store,
-    command = duckdb::dbConnect(
-      drv = duckdb::duckdb(), 
-      dbdir = spph_review_store_location,
-      read_only = TRUE
-    )
-  )
+    command = ragnar::ragnar_store_connect(location = spph_review_store_location),
+    cue = targets::tar_cue("always")
+  ),
+  spph_model_name = "gpt-oss:120b",
+  tar_target(
+    name = spph_chat_client,
+    command = ellmer::chat_ollama(model = spph_model_name),
+    cue = tar_cue("always")
+  )#,
+  # tar_target(
+  #   name = spph_review_prompt,
+  #   command = ,
+  # )
 )
-
-
