@@ -11,5 +11,13 @@ sr_output_targets <- tar_plan(
       file = "data/sr/sr_public_health_rankings.csv"
     ),
     format = "file"
+  ),
+  tar_target(
+    name = ph_master_programme_list_csv,
+    command = write_csv_file(
+      x = ph_master_programme_list,
+      file = "data/ph_master_programme_list.csv"
+    ),
+    format = "file"
   )
 )
