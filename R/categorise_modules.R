@@ -8,5 +8,8 @@ categorise_modules <- function(modules, model) {
     model = model
   )
 
-  chat$chat_structured(modules, type = ellmer::type_string())
+  chat$chat_structured(
+    modules, 
+    type = ellmer::type_array(ellmer::type_string())
+  )
 }

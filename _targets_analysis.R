@@ -8,6 +8,6 @@ module_targets <- tar_plan(
   ),
   tar_target(
     name = module_categories,
-    command = categorise_modules(modules_core, model = "deepseek-r1:14b")
+    command = categorise_modules(modules_core, model = "gpt-oss:120b")
   )
 )
