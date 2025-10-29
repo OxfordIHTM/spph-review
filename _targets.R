@@ -28,9 +28,7 @@ processing_targets <- tar_plan(
 
 
 ## Analysis targets ----
-analysis_targets <- tar_plan(
-  
-)
+source("_targets_analysis.R")
 
 
 ## Output targets ----
