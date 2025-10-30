@@ -4,7 +4,7 @@
 module_targets <- tar_plan(
   tar_target(
     name = ph_analysis_model,
-    command = select_llm_model(src = "gpt-oss"),
+    command = select_llm_model(src = "deepseek"),
     cue = tar_cue("always")
   ),
   tar_target(
