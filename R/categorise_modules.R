@@ -39,22 +39,16 @@ create_module_categories <- function(modules, model) {
 #' 
 
 categorise_module <- function(module, module_categories, model) {
-  system_prompt = paste0(
-    "You are a terse assistant. Classify ", module, 
-    " into one of the following categories: ", 
-    paste(module_categories, collapse = ", "), "."
-  )
-
   chat <- ellmer::chat_ollama(model = model)
 
   type_category <- ellmer::type_object(
     category = ellmer::type_enum(
       values = module_categories,
-      description = "Category to assign to the given text"
+      description = "Category name"
     )
   )
 
-  df <- chat$chat_structured(module, type = type_category)
+  df <- try(chat$chat_structured(module, type = type_category))
 
   df
 }
