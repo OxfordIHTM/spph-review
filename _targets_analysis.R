@@ -40,7 +40,7 @@ module_targets <- tar_plan(
   module_categories = c(
     "Foundations in Public Health",
     "Quantitative Research Methods",
-    "Epidemiology and Statistics",
+    "Epidemiology and Biostatistics",
     "Qualitative Research Methods",
     "Health Promotion and Disease Prevention", 
     "Health Systems, Policy, and Governance", 
@@ -49,14 +49,28 @@ module_targets <- tar_plan(
     "Environmental Health and Sustainability",
     "Social Determinants of Health", 
     "Behavioural Sciences and Communication", 
-    "Health Economics and Finance", 
+    "Health Economics and Financing", 
     "Research Design and Evaluation", 
     "Ethical Considerations in Public Health", 
-    "Disaster Response and Emergency Management", 
-    "Introduction to Global Health"
+    "Disaster Response and Emergency Management"
   ),
   module_options_categories = c(
-
+    "Health Economics and Financing",
+    "Health Systems, Policy, and Governance", 
+    "Epidemiology and Biostatistics", 
+    "Infectious Disease, Outbreak Investigation, and One Health", 
+    "Chronic and Non‑Communicable Disease Epidemiology", 
+    "Environmental, Occupational, and Planetary Health", 
+    "Nutrition, Dietetics, and Food Systems",
+    "Health Promotion and Disease Prevention",
+    "Behavioural Sciences and Communication", 
+    "Implementation Science, Quality Improvement, and Program Evaluation", 
+    "Clinical Research, Trials, and Meta‑analysis", 
+    "Global Health and Development", 
+    "Indigenous, Racial, Gender, and Minority Health Equity", 
+    "Ethics, Law, and Human Rights in Public Health", 
+    "Digital Health, Data Science, and Informatics", 
+    "Leadership and Management Skills"
   ),
   tar_target(
     name = ph_modules_category,
