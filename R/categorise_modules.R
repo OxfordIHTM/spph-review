@@ -4,7 +4,11 @@
 
 create_module_categories <- function(modules, model) {
   chat <- ellmer::chat_ollama(
-    system_prompt = "You are a terse assistant. Categorise the following concepts. Make the categories succinct.",
+    system_prompt = "
+      You are a terse assistant.
+      Categorise the following concepts. 
+      Make the categories succinct.
+    ",
     model = model
   )
 
@@ -41,7 +45,21 @@ create_module_categories <- function(modules, model) {
 #' 
 
 categorise_module <- function(module, module_categories, model) {
-  chat <- ellmer::chat_ollama(model = model)
+  # system_prompt = paste0(
+  #   "You are a terse assistant. Classify ", module, 
+  #   " into one of the following categories: ", 
+  #   paste(module_categories, collapse = "; "), "."
+  # )
+
+  system_prompt <- "
+    You are a terse assistant. Classify the concept provided by the user into
+    one of the specified categories.
+  "
+
+  chat <- ellmer::chat_ollama(
+    system_prompt = system_prompt,
+    model = model
+  )
 
   type_category <- ellmer::type_object(
     category = ellmer::type_enum(
