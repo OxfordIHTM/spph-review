@@ -38,7 +38,8 @@ categorise_module <- function(module, module_categories, model) {
     type = ellmer::type_enum(
       values = module_categories,
       description = "Category to assign to the given text"
-    )
+    ) |>
+      ellmer::type_array()
   )
 
   df
