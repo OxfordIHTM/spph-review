@@ -73,15 +73,6 @@ module_targets <- tar_plan(
     "Leadership and Management Skills"
   ),
   tar_target(
-    name = ph_modules_category,
-    command = categorise_module(
-      module = modules_core_expanded,
-      module_categories = module_categories,
-      model = ph_analysis_model
-    ),
-    pattern = map(modules_core_expanded)
-  ),
-  tar_target(
     name = ph_modules_core_category,
     command = categorise_module(
       module = modules_core_expanded,
@@ -94,9 +85,16 @@ module_targets <- tar_plan(
     name = ph_modules_option_category,
     command = categorise_module(
       module = modules_option_expanded,
-      module_categories = module_option_categories,
+      module_categories = module_options_categories,
       model = ph_analysis_model
     ),
     pattern = map(modules_option_expanded)
+  ),
+  tar_target(
+    name = ph_review_data_processed,
+    command = process_review_data(
+      ph_review_data, sr_public_health_rankings,
+      ph_modules_category, ph_modules_option_category
+    )
   )
 )
