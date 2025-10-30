@@ -104,7 +104,7 @@ module_targets <- tar_plan(
     name = ph_review_data_processed,
     command = process_review_data(
       ph_review_data, sr_public_health_rankings,
-      ph_modules_category, ph_modules_option_category
+      ph_modules_core_category, ph_modules_option_category
     )
   )
 )
