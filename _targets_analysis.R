@@ -13,6 +13,11 @@ module_targets <- tar_plan(
   ),
   modules_core_expanded = ph_review_data_expanded$modules_core,
   tar_target(
+    name = ph_review_data_expanded_options,
+    command = expand_module(ph_review_data, type = "option")
+  ),
+  modules_option_expanded = ph_review_data_expanded_options$modules_options,
+  tar_target(
     name = modules_core,
     command = get_modules(ph_review_data)
   ),
@@ -48,5 +53,14 @@ module_targets <- tar_plan(
       model = ph_analysis_model
     ),
     pattern = map(modules_core_expanded)
+  ),
+  tar_target(
+    name = ph_modules_option_category,
+    command = categorise_module(
+      module = modules_option_expanded,
+      module_categories = module_categories,
+      model = ph_analysis_model
+    ),
+    pattern = map(modules_option_expanded)
   )
 )
