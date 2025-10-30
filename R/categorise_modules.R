@@ -26,7 +26,10 @@ create_module_categories <- function(modules, model) {
   #chat$chat(system_prompt)
   chat$chat_structured(
     system_prompt,
-    type = ellmer::type_array(ellmer::type_string())
+    type = ellmer::type_object(
+      "Categories",
+      category = ellmer::type_array(ellmer::type_string())
+    )
   )
 }
 
