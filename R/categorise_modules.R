@@ -50,6 +50,8 @@ categorise_module <- function(module, module_categories, model) {
 
   df <- try(chat$chat_structured(module, type = type_category))
 
+  if (is(df, "try-error")) df <- NA_character_
+
   df
 }
 
