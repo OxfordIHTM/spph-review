@@ -82,10 +82,19 @@ module_targets <- tar_plan(
     pattern = map(modules_core_expanded)
   ),
   tar_target(
+    name = ph_modules_core_category,
+    command = categorise_module(
+      module = modules_core_expanded,
+      module_categories = module_categories,
+      model = ph_analysis_model
+    ),
+    pattern = map(modules_core_expanded)
+  ),
+  tar_target(
     name = ph_modules_option_category,
     command = categorise_module(
       module = modules_option_expanded,
-      module_categories = module_categories,
+      module_categories = module_option_categories,
       model = ph_analysis_model
     ),
     pattern = map(modules_option_expanded)
