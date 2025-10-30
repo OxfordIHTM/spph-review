@@ -16,16 +16,18 @@ create_module_categories <- function(modules, model) {
 
 
 create_module_categories <- function(modules, model) {
-  system_prompt <- paste0(
-    "You are a terse assistant. Create categories that will summarise the following concepts: ",
-    modules, ". Make the categories succinct."
+  system_prompt <- "
+    You are a terse assistant. Create categories that will summarise the
+    concepts provided by the user. Make the categories succinct.
+  "
+
+  chat <- ellmer::chat_ollama(
+    system_prompt = system_prompt,
+    model = model
   )
 
-  chat <- ellmer::chat_ollama(model = model)
-
-  #chat$chat(system_prompt)
   chat$chat_structured(
-    system_prompt,
+    modules,
     type = ellmer::type_object(
       "Categories",
       category = ellmer::type_array(ellmer::type_string())
