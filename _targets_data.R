@@ -587,3 +587,14 @@ degree_list_targets <- tar_plan(
       dplyr::pull(url)
   )
 )
+
+
+## Review data ----
+
+review_targets <- tar_plan(
+  review_gdrive_id = "143O3BSy8rUGXzNPmFQLTTE-0JlbEnA59Uw6ggOB1dB0",
+  tar_target(
+    name = ph_review_data,
+    command = read_review_data(review_id = review_gdrive_id, overwrite = FALSE)
+  )
+)
