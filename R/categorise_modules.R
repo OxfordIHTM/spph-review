@@ -45,15 +45,10 @@ create_module_categories <- function(modules, model) {
 #' 
 
 categorise_module <- function(module, module_categories, model) {
-  # system_prompt = paste0(
-  #   "You are a terse assistant. Classify ", module, 
-  #   " into one of the following categories: ", 
-  #   paste(module_categories, collapse = "; "), "."
-  # )
-
   system_prompt <- "
-    You are a terse assistant. Classify the concept provided by the user into
-    one of the specified categories.
+    You are a terse assistant.
+    Classify the text provided by the user into the most appropriate category
+    from one of the given categories.
   "
 
   chat <- ellmer::chat_ollama(
