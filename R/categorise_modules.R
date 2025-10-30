@@ -23,7 +23,11 @@ create_module_categories <- function(modules, model) {
 
   chat <- ellmer::chat_ollama(model = model)
 
-  chat$chat(system_prompt)
+  #chat$chat(system_prompt)
+  chat$chat_structured(
+    system_prompt,
+    type = ellmer::type_array(ellmer::type_string())
+  )
 }
 
 
