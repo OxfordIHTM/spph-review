@@ -27,6 +27,16 @@ module_targets <- tar_plan(
       modules_core, model = ph_analysis_model
     )
   ),
+  tar_target(
+    name = modules_options,
+    command = get_modules_options(ph_review_data)
+  ),
+  tar_target(
+    name = module_option_categories_extract,
+    command = create_module_categories(
+      modules_options, model = ph_analysis_model
+    )
+  ),
   module_categories = c(
     "Foundations in Public Health",
     "Quantitative Research Methods",
@@ -44,6 +54,9 @@ module_targets <- tar_plan(
     "Ethical Considerations in Public Health", 
     "Disaster Response and Emergency Management", 
     "Introduction to Global Health"
+  ),
+  module_options_categories = c(
+
   ),
   tar_target(
     name = ph_modules_category,

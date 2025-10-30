@@ -15,6 +15,18 @@ create_module_categories <- function(modules, model) {
 }
 
 
+create_module_categories <- function(modules, model) {
+  system_prompt <- paste0(
+    "You are a terse assistant. Create categories that will summarise the following concepts: ",
+    modules, ". Make the categories succinct."
+  )
+
+  chat <- ellmer::chat_ollama(model = model)
+
+  chat$chat(system_prompt)
+}
+
+
 #'
 #' Categorise modules
 #' 
@@ -43,6 +55,19 @@ categorise_module <- function(module, module_categories, model) {
   )
 
   df
+}
+
+
+categorise_module <- function(module, module_categories, model) {
+  system_prompt = paste0(
+    "You are a terse assistant. Classify ", module, 
+    " into one of the following categories: ", 
+    paste(module_categories, collapse = ", "), "."
+  )
+
+  chat <- ellmer::chat_ollama(model = model)
+
+  chat$chat(system_prompt)
 }
 
 
