@@ -17,11 +17,11 @@ expand_module <- function(ph_review_data,
   if (type == "option") {
     df <- ph_review_data |>
       dplyr::mutate(
-        modules_option = stringr::str_split(
-          string = modules_option, pattern = "; "
+        modules_options = stringr::str_split(
+          string = modules_options, pattern = "; "
         )
       ) |>
-      tidyr::unnest(cols = modules_option)
+      tidyr::unnest(cols = modules_options)
   }
 
   if (type == "track") {

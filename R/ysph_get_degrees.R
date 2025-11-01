@@ -7,7 +7,7 @@ ysph_get_master_programme_links <- function(.url) {
 
   degree_name <- current_session |>
     rvest::html_elements(
-      css = ".base-page .content .component-wrapper .summary-list-item h2"
+      css = ".summary-list-item__link"
     ) |>
     rvest::html_text2() |>
     (\(x) 
@@ -25,18 +25,24 @@ ysph_get_master_programme_links <- function(.url) {
         )
       
         x <- ifelse(
-          grepl(pattern = "Degree", x = x),
+          grepl(pattern = "(MPH)", x = x),
           "Master of Public Health",
           x
-        )  
+        )
+      
+        x <- ifelse(
+          grepl(pattern = "Master of Science in Public Health", x = x),
+          "Master of Science in Public Health",
+          x
+        )
       
         x
-      }
+    }
     )()
 
   programme_link <- current_session |>
     rvest::html_elements(
-      css = ".base-page .content .component-wrapper .summary-list-item a"
+      css = ".summary-list-item__link"
     ) |>
     rvest::html_attr(name = "href") |>
     (\(x) paste0("https://ysph.yale.edu", x))()
