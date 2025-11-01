@@ -19,5 +19,13 @@ sr_output_targets <- tar_plan(
       file = "data/ph_master_programme_list.csv"
     ),
     format = "file"
+  ),
+  tar_target(
+    name = ph_review_data_processed_csv,
+    command = write_csv_file(
+      x = ph_review_data_processed,
+      file = "data/ph_review_data_processed.csv"
+    ),
+    format = "file"
   )
 )
