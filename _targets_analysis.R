@@ -106,5 +106,19 @@ module_targets <- tar_plan(
       ph_review_data, sr_public_health_rankings,
       ph_modules_core_category, ph_modules_option_category
     )
+  ),
+  tar_target(
+    name = ph_review_data_release_file,
+    command = spph_get_review_data(
+      file = "ph_review_data_processed.csv",
+      dirpath = "data"
+    ),
+    format = "file"
+  ),
+  tar_target(
+    name = ph_review_data_released,
+    command = readr::read_csv(
+      file = ph_review_data_release_file, show_col_types = FALSE
+    )
   )
 )

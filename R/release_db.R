@@ -24,3 +24,8 @@ release_rag_db <- function(file, name) {
 
   piggyback::pb_upload(file = file, name = name, tag = tag)
 }
+
+
+release_review_data <- function(file, name) {
+  piggyback::pb_upload(file = file, name = name)
+}
