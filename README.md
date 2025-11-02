@@ -24,14 +24,20 @@ The project repository is structured as follows:
         |-- .github/
         |-- data/
         |-- data-raw/
+        |-- figures/
         |-- outputs/
         |-- R/
-        |-- reports
         |-- renv
-        |-- renv.lock
+        |-- reports
+        |-- _targets_analysis.R
+        |-- _targets_data.R
+        |-- _targets_output.R
+        |-- _targets_rag.R
+        |-- _targets_release.R
+        |-- _targets.R
         |-- .Rprofile
         |-- packages.R
-        |-- _targets.R
+        |-- renv.lock
 
   - `.github` contains project testing and automated deployment of
     outputs workflows via continuous integration and continuous
