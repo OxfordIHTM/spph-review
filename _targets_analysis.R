@@ -122,5 +122,47 @@ module_targets <- tar_plan(
       file = ph_review_data_release_file, show_col_types = FALSE
     ),
     cue = tar_cue("always")
+  ),
+  tar_target(
+    name = table_institution_countries,
+    command = tabulate_institution_locations(ph_review_data_released)
+  ),
+  tar_target(
+    name = barplot_institution_countries,
+    command = plot_institution_locations(table_institution_countries)
+  ),
+  tar_target(
+    name = table_institution_regions,
+    command = tabulate_institution_locations(
+      ph_review_data_released, area = "region"
+    )
+  ),
+  tar_target(
+    name = barplot_institution_regions,
+    command = plot_institution_locations(
+      table_institution_regions, area = "region"
+    )
+  ),
+  tar_target(
+    name = table_core_module_categories,
+    command = tabulate_categories(
+      module_categories, 
+      module = ph_review_data_released$modules_core_category
+    )
+  ),
+  tar_target(
+    name = barplot_core_module_categories,
+    command = plot_core_modules(table_core_module_categories)
+  ),
+  tar_target(
+    name = table_option_module_categories,
+    command = tabulate_categories(
+      module_options_categories, 
+      module = ph_review_data_released$modules_options_category
+    )
+  ),
+  tar_target(
+    name = barplot_option_module_categories,
+    command = plot_option_modules(table_option_module_categories)
   )
 )

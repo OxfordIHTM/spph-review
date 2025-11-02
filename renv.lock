@@ -1328,6 +1328,38 @@
       "Maintainer": "Richard Iannone <rich@posit.co>",
       "Repository": "RSPM"
     },
+    "forestploter": {
+      "Package": "forestploter",
+      "Version": "1.1.3",
+      "Source": "Repository",
+      "Title": "Create a Flexible Forest Plot",
+      "Authors@R": "person(given=\"Alimu\",  family = \"Dayimu\", email = \"ad938@cam.ac.uk\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0001-9998-7463\"))",
+      "Description": "Create a forest plot based on the layout of the data. Confidence intervals in multiple columns by groups can be done easily. Editing the plot, inserting/adding text, applying a theme to the plot, and much more.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://github.com/adayim/forestploter",
+      "BugReports": "https://github.com/adayim/forestploter/issues",
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.3.2",
+      "Imports": [
+        "grid",
+        "gridExtra",
+        "gtable"
+      ],
+      "Suggests": [
+        "gridtext",
+        "rmarkdown",
+        "knitr",
+        "vdiffr",
+        "testthat (>= 3.0.0)",
+        "covr"
+      ],
+      "VignetteBuilder": "knitr",
+      "Config/testthat/edition": "3",
+      "NeedsCompilation": "no",
+      "Author": "Alimu Dayimu [aut, cre] (<https://orcid.org/0000-0001-9998-7463>)",
+      "Maintainer": "Alimu Dayimu <ad938@cam.ac.uk>",
+      "Repository": "https://packagemanager.posit.co/cran/__linux__/jammy/latest"
+    },
     "fs": {
       "Package": "fs",
       "Version": "1.6.6",
@@ -1739,6 +1771,37 @@
       "Author": "Jennifer Bryan [cre, aut] (ORCID: <https://orcid.org/0000-0002-6983-2759>), Posit Software, PBC [cph, fnd]",
       "Maintainer": "Jennifer Bryan <jenny@posit.co>",
       "Repository": "CRAN"
+    },
+    "gridExtra": {
+      "Package": "gridExtra",
+      "Version": "2.3",
+      "Source": "Repository",
+      "Authors@R": "c(person(\"Baptiste\", \"Auguie\", email = \"baptiste.auguie@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Anton\", \"Antonov\", email = \"tonytonov@gmail.com\", role = c(\"ctb\")))",
+      "License": "GPL (>= 2)",
+      "Title": "Miscellaneous Functions for \"Grid\" Graphics",
+      "Type": "Package",
+      "Description": "Provides a number of user-level functions to work with \"grid\" graphics, notably to arrange multiple grid-based plots on a page, and draw tables.",
+      "VignetteBuilder": "knitr",
+      "Imports": [
+        "gtable",
+        "grid",
+        "grDevices",
+        "graphics",
+        "utils"
+      ],
+      "Suggests": [
+        "ggplot2",
+        "egg",
+        "lattice",
+        "knitr",
+        "testthat"
+      ],
+      "RoxygenNote": "6.0.1",
+      "NeedsCompilation": "no",
+      "Author": "Baptiste Auguie [aut, cre], Anton Antonov [ctb]",
+      "Maintainer": "Baptiste Auguie <baptiste.auguie@gmail.com>",
+      "Repository": "https://packagemanager.posit.co/cran/__linux__/jammy/latest",
+      "Encoding": "UTF-8"
     },
     "gtable": {
       "Package": "gtable",
@@ -2685,6 +2748,54 @@
       "Author": "Jeroen Ooms [aut, cre] (ORCID: <https://orcid.org/0000-0002-4035-0289>), Oliver Keyes [ctb]",
       "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
       "Repository": "https://packagemanager.posit.co/cran/latest"
+    },
+    "oxthema": {
+      "Package": "oxthema",
+      "Version": "0.0.0.9000",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Oxford Colours, Palettes, Fonts, and Themes",
+      "Authors@R": "c( person(given = \"Ernest\", family = \"Guevarra\",  comment = c(ORCID = \"0000-0002-4887-4415\"),  email = \"ernest@guevarra.io\", role = c(\"aut\", \"cre\", \"cph\")), person(given = \"Greco\", family = \"Malijan\", role = \"aut\"))",
+      "Description": "Colours, palettes, fonts, and themes based on University of Oxford's visual identity guidelines <https://communications.web.ox.ac.uk/communications-resources/visual-identity/identity-guidelines>.",
+      "License": "GPL (>= 3)",
+      "Depends": [
+        "R (>= 2.10)"
+      ],
+      "Imports": [
+        "forestploter",
+        "ggplot2",
+        "stringr",
+        "systemfonts",
+        "withr"
+      ],
+      "Suggests": [
+        "covr",
+        "knitr",
+        "ragg",
+        "rmarkdown",
+        "sf",
+        "showtext",
+        "spelling",
+        "sysfonts",
+        "testthat (>= 3.0.0)"
+      ],
+      "Encoding": "UTF-8",
+      "Language": "en-GB",
+      "LazyData": "true",
+      "RoxygenNote": "7.3.1",
+      "Roxygen": "list(markdown = TRUE)",
+      "URL": "https://oxford-ihtm.io/oxthema/,https://github.com/OxfordIHTM/oxthema",
+      "BugReports": "https://github.com/OxfordIHTM/oxthema/issues",
+      "Config/testthat/edition": "3",
+      "VignetteBuilder": "knitr",
+      "Config/pak/sysreqs": "libfontconfig1-dev libfreetype6-dev libicu-dev",
+      "Repository": "https://oxfordihtm.r-universe.dev",
+      "RemoteUrl": "https://github.com/OxfordIHTM/oxthema",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "3c1fb379dde1204f9b0f9ec38b1ebadef428eaf5",
+      "NeedsCompilation": "no",
+      "Author": "Ernest Guevarra [aut, cre, cph] (<https://orcid.org/0000-0002-4887-4415>), Greco Malijan [aut]",
+      "Maintainer": "Ernest Guevarra <ernest@guevarra.io>"
     },
     "pdftools": {
       "Package": "pdftools",
@@ -3936,6 +4047,54 @@
       "NeedsCompilation": "yes",
       "Author": "Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>), Gábor Csárdi [ctb]",
       "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
+      "Repository": "CRAN"
+    },
+    "systemfonts": {
+      "Package": "systemfonts",
+      "Version": "1.3.1",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "System Native Font Finding",
+      "Authors@R": "c( person(\"Thomas Lin\", \"Pedersen\", , \"thomas.pedersen@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-5147-4711\")), person(\"Jeroen\", \"Ooms\", , \"jeroen@berkeley.edu\", role = \"aut\", comment = c(ORCID = \"0000-0002-4035-0289\")), person(\"Devon\", \"Govett\", role = \"aut\", comment = \"Author of font-manager\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
+      "Description": "Provides system native access to the font catalogue. As font handling varies between systems it is difficult to correctly locate installed fonts across different operating systems. The 'systemfonts' package provides bindings to the native libraries on Windows, macOS and Linux for finding font files that can then be used further by e.g. graphic devices. The main use is intended to be from compiled code but 'systemfonts' also provides access from R.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://github.com/r-lib/systemfonts, https://systemfonts.r-lib.org",
+      "BugReports": "https://github.com/r-lib/systemfonts/issues",
+      "Depends": [
+        "R (>= 3.2.0)"
+      ],
+      "Imports": [
+        "base64enc",
+        "grid",
+        "jsonlite",
+        "lifecycle",
+        "tools",
+        "utils"
+      ],
+      "Suggests": [
+        "covr",
+        "farver",
+        "ggplot2",
+        "graphics",
+        "knitr",
+        "ragg",
+        "rmarkdown",
+        "svglite",
+        "testthat (>= 2.1.0)"
+      ],
+      "LinkingTo": [
+        "cpp11 (>= 0.2.1)"
+      ],
+      "VignetteBuilder": "knitr",
+      "Config/build/compilation-database": "true",
+      "Config/Needs/website": "tidyverse/tidytemplate",
+      "Config/usethis/last-upkeep": "2025-04-23",
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.3.2",
+      "SystemRequirements": "fontconfig, freetype2",
+      "NeedsCompilation": "yes",
+      "Author": "Thomas Lin Pedersen [aut, cre] (ORCID: <https://orcid.org/0000-0002-5147-4711>), Jeroen Ooms [aut] (ORCID: <https://orcid.org/0000-0002-4035-0289>), Devon Govett [aut] (Author of font-manager), Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
+      "Maintainer": "Thomas Lin Pedersen <thomas.pedersen@posit.co>",
       "Repository": "CRAN"
     },
     "tarchetypes": {

@@ -91,7 +91,8 @@ add_module_core_categories <- function(ph_review_data,
   
   df <- ph_review_data_expanded |>
     dplyr::mutate(
-      modules_core_category = ph_modules_category, .after = modules_core
+      modules_core_category = unlist(ph_modules_category), 
+      .after = modules_core
     ) |>
     dplyr::mutate(
       modules_core_category = ifelse(
@@ -131,7 +132,7 @@ add_module_options_categories <- function(ph_review_data,
   
   df <- ph_review_data_expanded |>
     dplyr::mutate(
-      modules_options_category = ph_modules_option_category, 
+      modules_options_category = unlist(ph_modules_option_category), 
       .after = modules_options
     ) |>
     dplyr::mutate(
