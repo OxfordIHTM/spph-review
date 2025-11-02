@@ -92,6 +92,16 @@ add_module_core_categories <- function(ph_review_data,
   df <- ph_review_data_expanded |>
     dplyr::mutate(
       modules_core_category = ph_modules_category, .after = modules_core
+    ) |>
+    dplyr::mutate(
+      modules_core_category = ifelse(
+        grepl(
+          pattern = "Epidem|epidem|Statistic|statistic", 
+          x = modules_core_category
+        ),
+        "Epidemiology and Statistics",
+        modules_core_category
+      )
     )
   
   if (collapse) {
@@ -123,6 +133,16 @@ add_module_options_categories <- function(ph_review_data,
     dplyr::mutate(
       modules_options_category = ph_modules_option_category, 
       .after = modules_options
+    ) |>
+    dplyr::mutate(
+      modules_options_category = ifelse(
+        grepl(
+          pattern = "Epidem|epidem|Statistic|statistic", 
+          x = modules_options_category
+        ),
+        "Epidemiology and Biostatistics",
+        modules_options_category
+      )
     )
   
   if (collapse) {

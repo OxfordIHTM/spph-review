@@ -113,12 +113,14 @@ module_targets <- tar_plan(
       file = "ph_review_data_processed.csv",
       dirpath = "data"
     ),
+    cue = tar_cue("always"),
     format = "file"
   ),
   tar_target(
     name = ph_review_data_released,
     command = readr::read_csv(
       file = ph_review_data_release_file, show_col_types = FALSE
-    )
+    ),
+    cue = tar_cue("always")
   )
 )
