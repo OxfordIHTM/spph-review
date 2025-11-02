@@ -97,7 +97,7 @@ add_module_core_categories <- function(ph_review_data,
       modules_core_category = ifelse(
         grepl(
           pattern = "Epidem|epidem|Statistic|statistic", 
-          x = modules_core_category
+          x = modules_core
         ),
         "Epidemiology and Statistics",
         modules_core_category
@@ -138,7 +138,7 @@ add_module_options_categories <- function(ph_review_data,
       modules_options_category = ifelse(
         grepl(
           pattern = "Epidem|epidem|Statistic|statistic", 
-          x = modules_options_category
+          x = modules_options
         ),
         "Epidemiology and Biostatistics",
         modules_options_category
