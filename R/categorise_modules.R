@@ -85,7 +85,8 @@ categorise_module <- function(module, module_categories, model) {
 
 
 add_module_core_categories <- function(ph_review_data, 
-                                       ph_modules_category, collapse = FALSE) {
+                                       ph_modules_category, 
+                                       collapse = FALSE) {
   ph_review_data_expanded <- expand_module(ph_review_data, type = "core")
   
   df <- ph_review_data_expanded |>
@@ -96,7 +97,8 @@ add_module_core_categories <- function(ph_review_data,
   if (collapse) {
     modules_core_category <- df |>
       dplyr::summarise(
-        modules_core_category = paste(modules_core_category, collapse = "; "),
+        modules_core_category = paste(
+          unique(modules_core_category), collapse = "; "),
         .by = institution
       ) |>
       dplyr::pull(modules_core_category)
@@ -127,7 +129,7 @@ add_module_options_categories <- function(ph_review_data,
     modules_options_category <- df |>
       dplyr::summarise(
         modules_options_category = paste(
-          modules_options_category, collapse = "; "
+          unique(modules_options_category), collapse = "; "
         ),
         .by = institution
       ) |>
