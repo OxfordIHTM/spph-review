@@ -14,5 +14,6 @@ expand_categories <- function(module_category, module) {
     module = module
   ) |>
     (\(x) { names(x) <- module_category; x })() |>
-    do.call(cbind, args = _)
+    do.call(cbind, args = _) |>
+    tibble::as_tibble()
 }
