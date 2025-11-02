@@ -31,7 +31,7 @@ targets::tar_load(
   c(
     sr_public_health_rankings, the_overall_rankings, qs_overall_rankings,
     ph_master_programme_list, ph_review_data_released, module_categories,
-    module_options_categories, starts_with("table"), starts_with("barplot")
+    module_options_categories, table_core_module_categories, table_option_module_categories, table_institutions_countries, table_institutions_regions, barplot_institution_countries, barplot_institution_regions, barplot_core_module_categories, barplot_option_module_categories
   )
 )
 ```
@@ -44,10 +44,73 @@ targets::tar_load(
 ### Summary
 
 ```{r}
+#| label: tbl-rankings-table
+#| tbl-cap: Top 30 Public Health Schools and Programmes
+#| html-table-processing: none
+#| echo: false
 
-ph_review
-
+ph_review_data_released |>
+  dplyr::select(rank, institution) |>
+  knitr::kable() |>
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "bordered"),
+    position = "center",
+    full_width = FALSE
+  )
 ```
 
 
+#### Institutions by country
 
+```{r}
+#| label: fig-institutions-by-country
+#| fig-cap: Top 30 Public Health Schools and Programmes by Country
+#| fig-width: 10
+#| fig-height: 12
+#| message: false
+#| warning: false
+#| echo: false
+
+barplot_institution_countries
+```
+
+#### Institutions by region
+
+```{r}
+#| label: fig-institutions-by-region
+#| fig-cap: Top 30 Public Health Schools and Programmes by Region
+#| fig-width: 10
+#| fig-height: 12
+#| message: false
+#| warning: false
+#| echo: false
+
+barplot_institution_regions
+```
+
+### Core modules
+
+```{r}
+#| label: fig-core-modules
+#| fig-cap: Core modules themes
+#| fig-width: 14
+#| fig-height: 12
+#| message: false
+#| warning: false
+#| echo: false
+
+barplot_core_module_categories
+```
+
+
+```{r}
+#| label: fig-modules-options
+#| fig-cap: Module options themes
+#| fig-width: 14
+#| fig-height: 12
+#| message: false
+#| warning: false
+#| echo: false
+
+barplot_option_module_categories
+```

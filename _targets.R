@@ -41,7 +41,13 @@ source("_targets_release.R")
 
 ## Reporting targets ----
 report_targets <- tar_plan(
-  
+  tar_quarto(
+    name = spph_review_report,
+    path = "reports/spph_review.qmd",
+    working_directory = here::here(),
+    quiet = FALSE,
+    cue = tar_cue("always")
+  )  
 )
 
 
