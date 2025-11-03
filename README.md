@@ -5,6 +5,17 @@
 
 <!-- badges: start -->
 
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![test targets
+workflow](https://github.com/OxfordIHTM/spph-review/actions/workflows/test-targets-workflow.yml/badge.svg)](https://github.com/OxfordIHTM/spph-review/actions/workflows/test-targets-workflow.yml)
+[![License for
+code](https://img.shields.io/badge/license%20\(for%20code\)-GPL3.0-blue.svg)](https://opensource.org/licenses/gpl-3.0.html)
+[![License for
+text](https://img.shields.io/badge/license%20\(for%20writing\)-CC_BY_4.0-blue)](https://creativecommons.org/licenses/by/4.0/)
+[![License for
+data](https://img.shields.io/badge/license%20\(for%20data\)-CC0-blue)](https://creativecommons.org/public-domain/cc0/)
 <!-- badges: end -->
 
 This repository is a template for a
@@ -330,3 +341,12 @@ targets::tar_make(
   dplyr::contains("ph_master_programme", "ph_review_data")
 )
 ```
+
+## License
+
+All code in this project is released under a
+[GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html#license-text)
+license. All text in this project is released under a
+[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
+license. All data is released under a
+[CC0](https://creativecommons.org/public-domain/cc0/) license.
