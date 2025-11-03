@@ -104,13 +104,34 @@ to install all R package dependencies.
 
 Currently, the project has workflows for the following:
 
-1. 
+1. Extraction, transformation, and loading (ETL) workflow for the Association of Schools and Programs of Public Health (ASPPH) and Association of Schools of Public Health in the European Region (ASPHER) members list.
+
+The following diagram illustrates this pipeline.
+
+```{r association-data-workflow, echo = FALSE, message = FALSE, warning = FALSE, results = 'asis'}
+cat(
+  "```mermaid",
+  targets::tar_mermaid(
+    targets_only = TRUE, 
+    names = dplyr::starts_with(c("aspph", "aspher")),
+    color = FALSE, legend = FALSE
+  ),
+  "```",
+  sep = "\n"
+)
+```
+
+To run this workflow, issue the following command on the R console:
+
+```R
+targets::tar_make(dplyr::starts_with(c("aspph", "aspher")))
+```
 
 2. Extraction, transformation, and loading (ETL) workflow for the **Times Higher Education (THE)** university rankings, **QS** world university rankings, and the **ShanghaiRanking** academic ranking of world universities.
 
 The following diagram illustrates this pipeline.
 
-```{r ranking-data-workflow, echo = FALSE, message = FALSE, results = 'asis'}
+```{r ranking-data-workflow, echo = FALSE, message = FALSE, warning = FALSE, results = 'asis'}
 cat(
   "```mermaid",
   targets::tar_mermaid(
@@ -127,6 +148,36 @@ To run this workflow, issue the following command on the R console:
 
 ```R
 targets::tar_make(dplyr::starts_with(c("the", "qs", "sr")))
+```
+
+3. Workflow for the creation of knowledge store of schools and programmes of public health for Retrieval augmentation generation (RAG)
+
+The following diagram illustrates this pipeline.
+
+```{r schools-data-workflow, echo = FALSE, message = FALSE, warning = FALSE, results = 'asis'}
+cat(
+  "```mermaid",
+  targets::tar_mermaid(
+    targets_only = TRUE, 
+    names = c(
+      ph_master_programme_links,
+      ph_master_programme_list_csv,
+      ph_review_data_processed_csv,
+      ph_review_data_released 
+    ),
+    color = FALSE, legend = FALSE
+  ),
+  "```",
+  sep = "\n"
+)
+```
+
+To run this workflow, issue the following command on the R console:
+
+```R
+targets::tar_make(
+  dplyr::contains("ph_master_programme", "ph_review_data")
+)
 ```
 
 
