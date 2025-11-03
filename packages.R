@@ -13,6 +13,7 @@ library(tidyr)
 library(readxl)
 library(ggplot2)
 library(quarto)
+library(kableExtra)
 
 
 ## GitHub releases ----
