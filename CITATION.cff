@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use the `spph-review` workflow or the datasets within this project, please cite it as below."
+authors:
+  - family-names: Ariana
+    given-names: Proochista
+    orcid: https://orcid.org/0000-0002-0154-2237
+  - family-names: Guevarra
+    given-names: Ernest
+    orcid: https://orcid.org/0000-0002-4887-4415
+  - name: "Tam-Anh Oxford Partnership"
+contact:
+  - affiliation: "University of Oxford MSc in International Health and Tropical Medicine"
+    email: ernest@guevarra.io
+    family-names: Guevarra
+    given-names: Ernest
+title: "spph-review: Review of Schools and Programmes of Public Health"
+version: 0.2.2
+# identifiers:
+#   - type: doi
+#     value: 10.5281/zenodo.16061967
+date-released: 2025-11-03
+license: GPL-3.0
+repository-code: https://github.com/OxfordIHTM/spph-review
