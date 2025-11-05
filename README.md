@@ -150,9 +150,10 @@ to install all R package dependencies.
 Currently, the project has workflows for the following:
 
 1.  Extraction, transformation, and loading (ETL) workflow for the
-    Association of Schools and Programs of Public Health (ASPPH) and
-    Association of Schools of Public Health in the European Region
-    (ASPHER) members list.
+    [Association of Schools and Programs of Public Health
+    (ASPPH)](https://aspph.org/) and [Association of Schools of Public
+    Health in the European Region (ASPHER)](https://www.aspher.org/)
+    members list.
 
 The following diagram illustrates this pipeline.
 
@@ -179,9 +180,11 @@ targets::tar_make(dplyr::starts_with(c("aspph", "aspher")))
 ```
 
 2.  Extraction, transformation, and loading (ETL) workflow for the
-    **Times Higher Education (THE)** university rankings, **QS** world
-    university rankings, and the **ShanghaiRanking** academic ranking of
-    world universities.
+    [Times Higher Education (THE) university
+    rankings](https://www.timeshighereducation.com/), [QS world
+    university rankings](https://www.topuniversities.com/), and the
+    [ShanghaiRanking](https://www.shanghairanking.com/) academic ranking
+    of world universities.
 
 The following diagram illustrates this pipeline.
 
@@ -341,6 +344,11 @@ targets::tar_make(
   dplyr::contains("ph_master_programme", "ph_review_data")
 )
 ```
+
+## Authors
+
+  - Proochista Ariana
+  - Ernest Guevarra
 
 ## License
 
