@@ -187,18 +187,19 @@ targets::tar_make(
 )
 ```
 
-## Authors
-
-* Proochista Ariana
-* Ernest Guevarra
-
 
 ## License
 
 All code in this project is released under a [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html#license-text) license. All text in this project is released under a [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/deed.en) license. All data is released under a [CC0](https://creativecommons.org/public-domain/cc0/) license.
 
 
+## Citation
 
+If you use this workflow and/or the datasets within this project in your work/research, please cite `spph-review` along with all the sources of data that were used for curating the data available herewith. The suggested appropriate citation metadata is provided in [CITATION.cff](https://github.com/OxfordIHTM/spph-review/blob/main/CITATION.cff).
 
+## Community guidelines
 
+Feedback, bug reports and feature requests are welcome; file issues or seek support [here](https://github.com/OxfordIHTM/spph-review/issues). If you would like to contribute to the project, please see our [contributing guidelines](https://github.com/OxfordIHTM/spph-review/blob/main/.github/CONTRIBUTING.md).
+
+This project is released with a [Contributor Code of Conduct](https://github.com/OxfordIHTM/spph-review/blob/main/.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
