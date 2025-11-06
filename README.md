@@ -157,7 +157,7 @@ Currently, the project has workflows for the following:
 
 The following diagram illustrates this pipeline.
 
-- aspher_members_list_raw declared \[14 branches\]
+Warning: program compiled against libxml 213 using older 209
 
 ``` mermaid
 graph LR
@@ -187,12 +187,7 @@ targets::tar_make(dplyr::starts_with(c("aspph", "aspher")))
 
 The following diagram illustrates this pipeline.
 
-- the_rankings_download_files declared \[5 branches\]
-- qs_overall_rankings_download_file declared \[5 branches\]
-- the_rankings_pdf_text declared \[5 branches\]
-- qs_overall_rankings_list declared \[5 branches\]
-- the_overall_rankings declared \[5 branches\]
-- qs_overall_rankings declared \[5 branches\]
+Warning: program compiled against libxml 213 using older 209
 
 ``` mermaid
 graph LR
@@ -231,10 +226,7 @@ targets::tar_make(dplyr::starts_with(c("the", "qs", "sr")))
 
 The following diagram illustrates this pipeline.
 
-- emory_master_programme_links declared \[2 branches\]
-- ucla_master_programme_links declared \[3 branches\]
-- ph_modules_core_category declared \[250 branches\]
-- ph_modules_option_category declared \[620 branches\]
+Warning: program compiled against libxml 213 using older 209
 
 ``` mermaid
 graph LR

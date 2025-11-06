@@ -120,7 +120,8 @@ cat(
     targets::tar_mermaid(
       targets_only = TRUE, 
       names = dplyr::starts_with(c("aspph", "aspher")),
-      color = FALSE, legend = FALSE
+      color = FALSE, legend = FALSE,
+      reporter = "silent"
     )
   ),
   "```",
@@ -144,7 +145,8 @@ cat(
   targets::tar_mermaid(
     targets_only = TRUE, 
     names = dplyr::starts_with(c("the", "qs", "sr")),
-    color = FALSE, legend = FALSE
+    color = FALSE, legend = FALSE,
+    reporter = "silent"
   ),
   "```",
   sep = "\n"
@@ -172,7 +174,8 @@ cat(
       ph_review_data_processed_csv,
       ph_review_data_released 
     ),
-    color = FALSE, legend = FALSE
+    color = FALSE, legend = FALSE,
+    reporter = "silent"
   ),
   "```",
   sep = "\n"
