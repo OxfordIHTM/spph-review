@@ -108,6 +108,21 @@ release_rag_db <- function(file,
 }
 
 
+#'
+#' Release review data
+#' 
+
 release_review_data <- function(file, name) {
   piggyback::pb_upload(file = file, name = name)
 }
+
+
+#'
+#' Release names
+#' 
+
+release_names <- c(
+  "ṣiḥḥah", "jiànkāng", "gezondheid", "santé", "gesundheit", "hygeia", 
+  "salute", "kenkō", "zdrowie", "saúde", "zdorov'ye", "salud", "hälsa", 
+  "sağlık", "sức khỏe"
+)
