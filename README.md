@@ -157,8 +157,6 @@ Currently, the project has workflows for the following:
 
 The following diagram illustrates this pipeline.
 
-Warning: program compiled against libxml 213 using older 209
-
 ``` mermaid
 graph LR
   style Graph fill:#FFFFFF00,stroke:#000000;
@@ -186,8 +184,6 @@ targets::tar_make(dplyr::starts_with(c("aspph", "aspher")))
     of world universities.
 
 The following diagram illustrates this pipeline.
-
-Warning: program compiled against libxml 213 using older 209
 
 ``` mermaid
 graph LR
@@ -225,8 +221,6 @@ targets::tar_make(dplyr::starts_with(c("the", "qs", "sr")))
     (RAG)
 
 The following diagram illustrates this pipeline.
-
-Warning: program compiled against libxml 213 using older 209
 
 ``` mermaid
 graph LR
