@@ -1,9 +1,37 @@
 # Output targets ---------------------------------------------------------------
 
 
-## Output Shanghai Rankings ----
+## Output Rankings and Review dataset ----
 
-sr_output_targets <- tar_plan(
+output_targets <- tar_plan(
+  tar_target(
+    name = aspph_members_list_csv,
+    command = write_csv_file(
+      x = aspph_members_list,
+      file = "data/aspph/aspph_members_list.csv"
+    )
+  ),
+  tar_target(
+    name = aspher_members_list_csv,
+    command = write_csv_file(
+      x = aspher_members_list,
+      file = "data/aspher/aspher_members_list.csv"
+    )
+  ),
+  tar_target(
+    name = the_overall_rankings_csv,
+    command = write_csv_file(
+      x = the_overall_rankings,
+      file = "data/the/the_overall_rankings.csv"
+    )
+  ),
+  tar_target(
+    name = qs_overall_rankings_csv,
+    command = write_csv_file(
+      x = qs_overall_rankings,
+      file = "data/qs/qs_overall_rankings.csv"
+    )
+  ),
   tar_target(
     name = sr_public_health_rankings_csv,
     command = write_csv_file(
