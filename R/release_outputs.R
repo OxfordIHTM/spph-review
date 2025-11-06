@@ -12,11 +12,12 @@ release_rag_db <- function(file,
     prev_release_tag <- piggyback::pb_releases() |>
       dplyr::slice(1) |>
       dplyr::pull(tag_name) |>
-      stringr::str_split(pattern = "\\.")
+      stringr::str_split(pattern = "\\.") |>
+      unlist()
+
+    tag <- prev_release_tag
 
     if (type == "major") {
-      tag <- prev_release_tag
-
       tag[1] <- tag[1] |>
         stringr::str_replace(
           pattern = "[0-9]", 
@@ -35,8 +36,6 @@ release_rag_db <- function(file,
     }
 
     if (type == "minor") {
-      tag <- prev_release_tag
-
       tag[2] <- tag[2] |>
         stringr::str_replace(
           pattern = "[0-9]", 
@@ -54,8 +53,6 @@ release_rag_db <- function(file,
     }
 
     if (type == "patch") {
-      tag <- prev_release_tag
-
       tag[3] <- tag[3] |>
         stringr::str_replace(
           pattern = "[0-9]", 
@@ -71,22 +68,12 @@ release_rag_db <- function(file,
     }
   }
   
-  tag <- paste(
-    tools::file_path_sans_ext(name),
-    Sys.Date() |> 
-      gsub(pattern = "-", replacement = "", x = _),
-    sep = "-"
-  )
-
   releases <- piggyback::pb_releases()
 
   if (ncol(releases) == 0) {
     piggyback::pb_new_release(
       tag = tag,
-      name = paste0(
-        "Schools and Programmes of Public Health Review ",
-         tag
-      ),
+      name = paste(name, tag),
       body = "Database release"
     )
   }
@@ -94,10 +81,7 @@ release_rag_db <- function(file,
   if (!tag %in% releases$tag_name) {
     piggyback::pb_new_release(
       tag = tag,
-      name = paste0(
-        "Schools and Programmes of Public Health Review ",
-        tag
-      ),
+      name = paste(name, tag),
       body = "Database release"
     )
   }
