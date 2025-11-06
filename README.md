@@ -1,14 +1,15 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Review of Schools and Programmes of Public Health
+# Mapping Master of Public Health Programmes
 
 <!-- badges: start -->
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![test targets
+![spph-review](https://img.shields.io/badge/version-0.2.3-blue) [![test
+targets
 workflow](https://github.com/OxfordIHTM/spph-review/actions/workflows/test-targets-workflow.yml/badge.svg)](https://github.com/OxfordIHTM/spph-review/actions/workflows/test-targets-workflow.yml)
 [![License for
 code](https://img.shields.io/badge/license%20(for%20code)-GPL3.0-blue.svg)](https://opensource.org/licenses/gpl-3.0.html)
@@ -22,10 +23,17 @@ This repository is a template for a
 [`docker`](https://www.docker.com/get-started)-containerised,
 [`{targets}`](https://docs.ropensci.org/targets/)-based,
 [`{renv}`](https://rstudio.github.io/renv/articles/renv.html)-enabled
-[`R`](https://cran.r-project.org/) workflow for the **Review of Schools
-and Programmes of Public Health project**.
+[`R`](https://cran.r-project.org/) workflow for the **Mapping of Master
+of Public Health Programmes** project.
 
 ## About the Project
+
+There are an abundance of public health programmes globally. This
+project maps and reviews these public health programmes, their common
+features, unique characteristics as well as pedagogical approaches.
+Professional standards are also considered in relation to key skills and
+competencies. This project also identifies the gaps and opportunities
+for a new public health programme to become leading in the sector.
 
 ## Repository Structure
 
@@ -132,7 +140,7 @@ if your machine has enough memory resources.
 
 ### R package dependencies
 
-This project was built using `R 4.5.1`. This project uses the `renv`
+This project was built using `R 4.5.2`. This project uses the `renv`
 framework to record R package dependencies and versions. Packages and
 versions used are recorded in `renv.lock` and code used to manage
 dependencies is in `renv/` and other files in the root project
