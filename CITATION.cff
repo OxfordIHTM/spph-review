@@ -13,11 +13,11 @@ contact:
     email: ernest@guevarra.io
     family-names: Guevarra
     given-names: Ernest
-title: "spph-review: Review of Schools and Programmes of Public Health"
-version: 0.2.2
-# identifiers:
-#   - type: doi
-#     value: 10.5281/zenodo.16061967
-date-released: 2025-11-03
+title: "spph-review: Mapping Master of Public Health Programmes"
+version: 0.3.1
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.17541612
+date-released: 2025-11-06
 license: GPL-3.0
 repository-code: https://github.com/OxfordIHTM/spph-review

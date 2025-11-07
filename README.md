@@ -8,7 +8,7 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-![spph-review](https://img.shields.io/badge/version-0.2.3-blue) [![test
+![spph-review](https://img.shields.io/badge/version-0.3.1-blue) [![test
 targets
 workflow](https://github.com/OxfordIHTM/spph-review/actions/workflows/test-targets-workflow.yml/badge.svg)](https://github.com/OxfordIHTM/spph-review/actions/workflows/test-targets-workflow.yml)
 [![License for
@@ -17,6 +17,7 @@ code](https://img.shields.io/badge/license%20(for%20code)-GPL3.0-blue.svg)](http
 text](https://img.shields.io/badge/license%20(for%20writing)-CC_BY_4.0-blue)](https://creativecommons.org/licenses/by/4.0/)
 [![License for
 data](https://img.shields.io/badge/license%20(for%20data)-CC0-blue)](https://creativecommons.org/public-domain/cc0/)
+[![DOI](https://zenodo.org/badge/1049585800.svg)](https://doi.org/10.5281/zenodo.17541612)
 <!-- badges: end -->
 
 This repository is a template for a
@@ -171,9 +172,11 @@ graph LR
   subgraph Graph
     direction LR
     x5f8756e1a2c66304["aspher_members_list_raw"]:::uptodate --> x98bc0d118cd6ec5b(["aspher_members_list"]):::uptodate
+    x98bc0d118cd6ec5b(["aspher_members_list"]):::uptodate --> x9f70c79a0bf573bd(["aspher_members_list_csv"]):::outdated
     x81884105d0e1a01e(["aspher_members_directory_url"]):::uptodate --> x5f8756e1a2c66304["aspher_members_list_raw"]:::uptodate
     x1e4c94ade0e7c48a(["aspher_members_pages"]):::uptodate --> x5f8756e1a2c66304["aspher_members_list_raw"]:::uptodate
     x6267feaba0bf3932(["aspph_members_directory_url"]):::uptodate --> xae9f694dc6961767(["aspph_members_list"]):::uptodate
+    xae9f694dc6961767(["aspph_members_list"]):::uptodate --> x7ce096f62d60bfd7(["aspph_members_list_csv"]):::outdated
     
   end
 ```
@@ -200,6 +203,7 @@ graph LR
     direction LR
     xf5b5abed18ea1d1a(["qs_gdrive_id"]):::uptodate --> x6416e41cf8dc3821(["qs_gdrive_list"]):::uptodate
     xd53eac577d2929f8["qs_overall_rankings_list"]:::uptodate --> x37b9da1597241587["qs_overall_rankings"]:::uptodate
+    x37b9da1597241587["qs_overall_rankings"]:::uptodate --> x6b6ae39ee55de2f6(["qs_overall_rankings_csv"]):::outdated
     x6416e41cf8dc3821(["qs_gdrive_list"]):::uptodate --> x10da32f41de863de["qs_overall_rankings_download_file"]:::uptodate
     x10da32f41de863de["qs_overall_rankings_download_file"]:::uptodate --> xd53eac577d2929f8["qs_overall_rankings_list"]:::uptodate
     x283ab20454910291(["sr_ph_rankings_gdrive_list"]):::uptodate --> xe2fef9f751519f5f(["sr_ph_rankings_download_file"]):::uptodate
@@ -210,6 +214,7 @@ graph LR
     xe2fef9f751519f5f(["sr_ph_rankings_download_file"]):::uptodate --> x74232ff4e76c1dcf(["sr_public_health_rankings_raw"]):::uptodate
     x08954fb96f89d64e(["the_gdrive_id"]):::uptodate --> xb3b152c5e5e4ae89(["the_gdrive_ranking_download_links"]):::uptodate
     xac3c5bdc37f5521d["the_rankings_pdf_text"]:::uptodate --> x2a541b9a4da4732f["the_overall_rankings"]:::uptodate
+    x2a541b9a4da4732f["the_overall_rankings"]:::uptodate --> xbb992b8b8554cfa8(["the_overall_rankings_csv"]):::outdated
     xb3b152c5e5e4ae89(["the_gdrive_ranking_download_links"]):::uptodate --> xcb7c43287b8b4747["the_rankings_download_files"]:::uptodate
     x91d62071178d9fcb(["the_rankings_pdf_pages"]):::uptodate --> xac3c5bdc37f5521d["the_rankings_pdf_text"]:::uptodate
     xcb7c43287b8b4747["the_rankings_download_files"]:::uptodate --> xac3c5bdc37f5521d["the_rankings_pdf_text"]:::uptodate
@@ -299,9 +304,9 @@ graph LR
     xf0fee9d2b37a3827(["review_gdrive_id"]):::uptodate --> xe6494c691f0de688(["ph_review_data"]):::uptodate
     xe6494c691f0de688(["ph_review_data"]):::uptodate --> xb02800a1f2e0cece(["ph_review_data_expanded"]):::uptodate
     xe6494c691f0de688(["ph_review_data"]):::uptodate --> x1541b6e79f348f94(["ph_review_data_expanded_options"]):::uptodate
+    xe6494c691f0de688(["ph_review_data"]):::uptodate --> x3573746531b63d9d(["ph_review_data_processed"]):::outdated
     xa808a822d9389ef4["ph_modules_option_category"]:::outdated --> x3573746531b63d9d(["ph_review_data_processed"]):::outdated
     xa7027837a89e5ec4(["sr_public_health_rankings"]):::uptodate --> x3573746531b63d9d(["ph_review_data_processed"]):::outdated
-    xe6494c691f0de688(["ph_review_data"]):::uptodate --> x3573746531b63d9d(["ph_review_data_processed"]):::outdated
     x47962afd33e90545["ph_modules_core_category"]:::outdated --> x3573746531b63d9d(["ph_review_data_processed"]):::outdated
     x3573746531b63d9d(["ph_review_data_processed"]):::outdated --> x2e27caf1c7d9ed2d(["ph_review_data_processed_csv"]):::outdated
     xde0dc4c4ce3aaef2(["ph_review_data_release_file"]):::outdated --> xa04cc092ddf50c86(["ph_review_data_released"]):::outdated
