@@ -7,14 +7,13 @@ authors:
   - family-names: Guevarra
     given-names: Ernest
     orcid: https://orcid.org/0000-0002-4887-4415
-  - name: "Tam-Anh Oxford Partnership"
 contact:
   - affiliation: "University of Oxford MSc in International Health and Tropical Medicine"
     email: ernest@guevarra.io
     family-names: Guevarra
     given-names: Ernest
 title: "spph-review: Mapping Master of Public Health Programmes"
-version: 0.3.1
+version: 0.3.2
 identifiers:
   - type: doi
     value: 10.5281/zenodo.17541612

@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-![spph-review](https://img.shields.io/badge/version-0.3.1-blue)
+![spph-review](https://img.shields.io/badge/version-0.3.2-blue)
 [![test targets workflow](https://github.com/OxfordIHTM/spph-review/actions/workflows/test-targets-workflow.yml/badge.svg)](https://github.com/OxfordIHTM/spph-review/actions/workflows/test-targets-workflow.yml)
 [![License for code](https://img.shields.io/badge/license (for code)-GPL3.0-blue.svg)](https://opensource.org/licenses/gpl-3.0.html)
 [![License for text](https://img.shields.io/badge/license (for writing)-CC_BY_4.0-blue)](https://creativecommons.org/licenses/by/4.0/)
