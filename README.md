@@ -8,7 +8,7 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-![spph-review](https://img.shields.io/badge/version-0.3.1-blue) [![test
+![spph-review](https://img.shields.io/badge/version-0.3.2-blue) [![test
 targets
 workflow](https://github.com/OxfordIHTM/spph-review/actions/workflows/test-targets-workflow.yml/badge.svg)](https://github.com/OxfordIHTM/spph-review/actions/workflows/test-targets-workflow.yml)
 [![License for
