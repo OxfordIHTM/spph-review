@@ -54,7 +54,7 @@ categorise_module <- function(module, module_categories, model) {
   chat <- ellmer::chat_ollama(
     system_prompt = system_prompt,
     model = model,
-    params = ellmer::params(temperature = 0.5)
+    params = ellmer::params(temperature = 0.3)
   )
 
   type_category <- ellmer::type_object(
