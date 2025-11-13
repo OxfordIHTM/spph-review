@@ -9,7 +9,8 @@ create_module_categories <- function(modules, model) {
       Categorise the following concepts. 
       Make the categories succinct.
     ",
-    model = model
+    model = model,
+    params = ellmer::params(temperature = 0.1)
   )
 
   chat$chat_structured(
