@@ -19,25 +19,26 @@ create_module_categories <- function(modules, model) {
 }
 
 
-# create_module_categories <- function(modules, model) {
-#   system_prompt <- "
-#     You are a terse assistant. Create categories that will summarise the
-#     concepts provided by the user. Make the categories succinct.
-#   "
+create_module_categories <- function(modules, model) {
+  system_prompt <- "
+    You are a terse assistant. Create categories that will summarise the
+    concepts provided by the user. Make the categories succinct.
+  "
 
-#   chat <- ellmer::chat_ollama(
-#     system_prompt = system_prompt,
-#     model = model
-#   )
+  chat <- ellmer::chat_ollama(
+    system_prompt = system_prompt,
+    model = model,
+    params = ellmer::params(temperature = 0.1)
+  )
 
-#   chat$chat_structured(
-#     modules,
-#     type = ellmer::type_object(
-#       "Categories",
-#       category = ellmer::type_array(ellmer::type_string())
-#     )
-#   )
-# }
+  chat$chat_structured(
+    modules,
+    type = ellmer::type_object(
+      "Categories",
+      category = ellmer::type_array(ellmer::type_string())
+    )
+  )
+}
 
 
 #'
