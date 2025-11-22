@@ -471,10 +471,19 @@ busph_data_targets <- tar_plan(
 
 melb_data_targets <- tar_plan(
   melb_master_programme_base_link = "https://study.unimelb.edu.au/study-with-us/graduate-courses/health/public-health",
+  melb_gdrive_id = "1q9BQugcchlwZVYIswu_agZKPrZCZdkNp",
+  tar_target(
+    name = melb_master_programme_html_file,
+    command = melb_gdrive_download(
+      gdrive_id = melb_gdrive_id, file_path = "data-raw/melb/melb.html"
+    ),
+    format = "file"
+  ),
   tar_target(
     name = melb_master_programme_links,
     command = melb_get_master_programme_links(
-      .url = melb_master_programme_base_link
+      .url = melb_master_programme_base_link,
+      html = melb_master_programme_html_file
     )
   )
 )
@@ -595,6 +604,7 @@ review_targets <- tar_plan(
   review_gdrive_id = "143O3BSy8rUGXzNPmFQLTTE-0JlbEnA59Uw6ggOB1dB0",
   tar_target(
     name = ph_review_data,
-    command = read_review_data(review_id = review_gdrive_id, overwrite = FALSE)
+    command = read_review_data(review_id = review_gdrive_id, overwrite = FALSE),
+    cue = tar_cue("always")
   )
 )

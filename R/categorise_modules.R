@@ -9,7 +9,8 @@ create_module_categories <- function(modules, model) {
       Categorise the following concepts. 
       Make the categories succinct.
     ",
-    model = model
+    model = model,
+    params = ellmer::params(temperature = 0.1)
   )
 
   chat$chat_structured(
@@ -27,7 +28,8 @@ create_module_categories <- function(modules, model) {
 
   chat <- ellmer::chat_ollama(
     system_prompt = system_prompt,
-    model = model
+    model = model,
+    params = ellmer::params(temperature = 0.1)
   )
 
   chat$chat_structured(
@@ -53,7 +55,8 @@ categorise_module <- function(module, module_categories, model) {
 
   chat <- ellmer::chat_ollama(
     system_prompt = system_prompt,
-    model = model
+    model = model,
+    params = ellmer::params(temperature = 0.1)
   )
 
   type_category <- ellmer::type_object(
