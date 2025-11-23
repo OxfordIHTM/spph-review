@@ -26,10 +26,24 @@ output_targets <- tar_plan(
     )
   ),
   tar_target(
+    name = the_med_health_rankings_csv,
+    command = write_csv_file(
+      x = the_rankings_by_subject,
+      file = "data/the/the_med_health_rankings.csv"
+    )
+  ),
+  tar_target(
     name = qs_overall_rankings_csv,
     command = write_csv_file(
       x = qs_overall_rankings,
       file = "data/qs/qs_overall_rankings.csv"
+    )
+  ),
+  tar_target(
+    name = qs_life_sci_rankings_csv,
+    command = write_csv_file(
+      x = qs_rankings_by_subject,
+      file = "data/qs/qs_life_sci_rankings.csv"
     )
   ),
   tar_target(
@@ -57,3 +71,4 @@ output_targets <- tar_plan(
     format = "file"
   )
 )
+
