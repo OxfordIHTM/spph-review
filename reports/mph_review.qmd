@@ -1,0 +1,487 @@
+---
+title: Mapping Masters in Public Health (MPH) Programmes
+subtitle: Summary Report
+author:
+  - name: Proochista Ariana
+    orcid: 0000-0002-0154-2237
+    email: proochista.ariana@ndm.ox.ac.uk
+    affiliation:
+      - name: Centre for Tropical Medicine and Global Health, Nuffield Department of Medicine, University of Oxford
+        city: Oxford
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+bibliography: references.bib
+reference-location: margin
+#citation-location: margin
+format: 
+  html:
+    toc: true
+    toc-location: left
+    embed-resources: true
+    grid:
+      body-width: 900px
+      margin-width: 300px
+    code-tools:
+      source: https://github.com/OxfordIHTM/spph-review/blob/main/reports/mph_review.qmd
+---
+
+```{r setup}
+#| echo: false
+
+suppressPackageStartupMessages(source(here::here("packages.R")))
+for (f in list.files(here::here("R"), full.names = TRUE)) source (f)
+
+targets::tar_load(
+  c(
+    sr_public_health_rankings, the_overall_rankings, the_rankings_by_subject_criteria_2025, the_rankings_by_subject,
+    qs_overall_rankings, qs_rankings_by_subject_criteria_2025,
+    qs_rankings_by_subject, ph_master_programme_list, ph_review_data_released, module_categories, module_options_categories, table_core_module_categories, table_option_module_categories, table_institutions_countries, table_institutions_regions, barplot_institution_countries, barplot_institution_regions, barplot_core_module_categories, barplot_option_module_categories
+  )
+)
+```
+
+This report provides an overview of the leading public health programmes globally, their common features, unique characteristics as well as delivery modalities. Professional standards are also considered in relation to key skills and competencies. The overview identifies the gaps and opportunities for a new public health programme to become leading in the sector.
+
+## Methodology {#sec-methods}
+
+To determine the top schools and programmes of public health, both the [Times Higher Education (THE)](https://www.timeshighereducation.com/) and the [QS](https://www.topuniversities.com/) world university rankings were initially reviewed. Whilst both these rankings are the most well-known internationally, they do not provide rankings specific to the public health subject area. The
+subject areas covered broadly include life sciences, medicine, and health. However, universities globally renowned for their public health programmes are not represented in the top 50 of these lists rendering such lists not suitable for our purpose. The [Shanghai Ranking](https://www.shanghairanking.com/), published by the [Center for World-Class Universities (CWCU)](https://soe.sjtu.edu.cn/En/Content/196), [Graduate School of Education of Shanghai Jiao Tong University](https://soe.sjtu.edu.cn/En/Content/161), China since 2003, provides rankings specific to public health and is most commonly cited by universities offering public health-related degrees. This ranking was therefore used for the purposes of this review to identify the top public health programmes globally[^1]. Nevertheless, the THE and QS rankings and methods are also provided to illustrate the types of characteristics that contribute to the ranking of world class universities.
+
+### Times Higher Education (THE) World Rankings {#sec-the}
+
+The Times Higher Education (THE) World University Rankings by Subject 2025 assesses universities across 11 subject areas. Drawing on 18 performance indicators grouped into five key pillars, THE offers a detailed assessment of academic and research excellence. The methodology is tailored for each
+subject area to ensure fairness and precision, accounting for the unique research cultures and publication practices of different disciplines. In particular, the research-related indicators are modified to better align with each discipline’s publication practices and research norms. @tbl-the-subject-criteria-table outlines the indicator weightings for the *‘Medical and Health’* subject area. It is notable that research reputation and quality carry more cumulative weight than teaching. And for teaching, it is the reputation that is most highly weighted with a dearth of indicators measuring the quality of teaching.
+
+```{r}
+#| label: tbl-the-subject-criteria-table
+#| tbl-cap: THE Indicator Weightings for Rankings in Medical and Health
+#| html-table-processing: none
+#| echo: false
+
+the_rankings_by_subject_criteria_2025 |>
+  dplyr::select(Pillar, Indicator, `Medical and Health`) |>
+  dplyr::mutate(
+    `Medical and Health` = scales::percent_format(
+      accuracy = 0.1
+    )(`Medical and Health`)
+  ) |>
+  knitr::kable(align = "llr") |>
+  kableExtra::kable_styling(
+    bootstrap_options = c("bordered"),
+    position = "center",
+    full_width = FALSE
+  ) |>
+  kableExtra::collapse_rows(columns = 1, valign = "top")
+```
+
+According to the indicators and weightings for Medical and Health subject area, the 2025 THE rankings are listed in @tbl-the-subject-ranking. The majority of the top ranked institutions fall in North America (16), 13 of which are in the US and three in Canada. Europe has 7 in the THE top 30 ranked Medical and Health Institutions, six of which are in the UK and one in Sweden. Asia has six institutions ranked in the THE top 30 for Medical and Health, four of which are in China, one in Singapore and one in Japan.
+
+```{r}
+#| label: tbl-the-subject-ranking
+#| tbl-cap: Times Higher Education Medical and Health Rankings 2025
+#| html-table-processing: none
+#| echo: false
+
+the_by_subject <- the_rankings_by_subject |>
+  dplyr::slice(1:30) |>
+  dplyr::select(rank, institution, country, un_region)
+
+cols <- the_by_subject |>
+  dplyr::mutate(
+    cols = dplyr::case_when(
+      un_region == "Europe" ~ oxthema::get_oxford_colour("sage"),
+      un_region == "Americas" ~ oxthema::get_oxford_colour("sky"),
+      un_region == "Asia" ~ oxthema::get_oxford_colour("potters"),
+      un_region == "Oceania" ~ oxthema::get_oxford_colour("lavender")
+    )
+  ) |>
+  dplyr::pull(cols) #|>
+  # lapply(FUN = get_alpha_colour) |>
+  # unlist()
+
+the_by_subject |>
+  knitr::kable(col.names = c("Rank", "Institution", "Country", "Region")) |>
+  kableExtra::kable_styling(
+    bootstrap_options = "bordered",
+    position = "center",
+    full_width = FALSE
+  ) |>
+  kableExtra::column_spec(column = 1:4, background = cols)
+```
+
+### QS World Rankings {#sec-qs}
+
+The QS method ranks academic programmes over five key indicators to reflect their performance, accounting for academic reputation, employer reputation and faculty research. The five indicators, outlined in @tbl-qs-subject-criteria-table, are weighted to calculate the overall score. For life sciences and medicine subjects, academic reputation accounts for 40%, employer reputation for 10%, citations per paper for 20%, H-index for 20%, and international research network for 10%. It is of note that the indicators rely on surveys of academics and employers, as well as the impact of research. The impact of research is highly reliant on citation metrics and not much evident for broader impact beyond publications. The QS ranking also lacks a measure for industrial partnerships as evident in the THE metrics.
+
+```{r}
+#| label: tbl-qs-subject-criteria-table
+#| tbl-cap: QS World Ranking Indicators
+#| html-table-processing: none
+#| echo: false
+
+qs_rankings_by_subject_criteria_2025 |>
+  dplyr::mutate(
+    weight = scales::percent_format(accuracy = 0.1)(weight)
+  ) |>
+  knitr::kable(
+    col.names = c("Indicator", "Weight", "Description"),
+    align = "lrl"
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "bordered"),
+    position = "center",
+    full_width = FALSE
+  )
+```
+
+According to the most recent QS Global Rankings for Life Sciences and Medicine (@tbl-qs-subject-ranking), the majority of the top 30 ranked institutions are in North America (17), most of which are based in the US (14) and three in Canada. Europe has 9 in the top 30 including six in the UK, one in Sweden, one in Belgium and one in Denmark. There are only two Asian Universities in the top 30 QS World Ranking for Life Sciences and Medicine: Peking University and National University of Singapore.
+
+```{r}
+#| label: tbl-qs-subject-ranking
+#| tbl-cap: QS Global Ranking for Life Sciences and Medicine
+#| html-table-processing: none
+#| echo: false
+
+qs_by_subject <- qs_rankings_by_subject |>
+  dplyr::slice(1:30) |>
+  dplyr::select(`2025`, Institution, `Country / Territory`, un_region)
+
+cols <- qs_by_subject |>
+  dplyr::mutate(
+    cols = dplyr::case_when(
+      un_region == "Europe" ~ oxthema::get_oxford_colour("sage"),
+      un_region == "Americas" ~ oxthema::get_oxford_colour("sky"),
+      un_region == "Asia" ~ oxthema::get_oxford_colour("potters"),
+      un_region == "Oceania" ~ oxthema::get_oxford_colour("lavender")
+    )
+  ) |>
+  dplyr::pull(cols) #|>
+  # lapply(FUN = get_alpha_colour) |>
+  # unlist()
+
+qs_by_subject |>
+  knitr::kable(col.names = c("Rank", "Institution", "Country", "Region")) |>
+  kableExtra::kable_styling(
+    bootstrap_options = "bordered",
+    position = "center",
+    full_width = FALSE
+  ) |>
+  kableExtra::column_spec(column = 1:4, background = cols)
+```
+
+### Shanghai Public Health Subject Rankings {#sec-sr-ph}
+
+The Shanghai Global Ranking of Academic Subjects evaluates universities that have produced a specified minimum number of publications between 2019 and 2023. This publication threshold varies by subject area. All bibliometric data used for the ranking are sourced from Web of Science and InCites. The Rankings employ a set of objective academic indicators and verified third-party data to assess the performance of universities worldwide across various subjects. These indicators span categories such as *World-Class Faculty*, *World-Class Output*, *High-Quality Research*, *Research Impact*, and *International Collaboration*. Within the World-Class Faculty category, indicators include: International Academic Award Laureates (Laureate), Highly Cited Researchers (HCR), Chief Editors of International Academic Journals (Editor), and International Academic Organization Leadership (Leadership). The World-Class Output category includes Top Journal Papers (TJ) and International Academic Awards (Award). High-Quality Research is represented by Q1 Journal Papers (Q1), while Research Impact is measured through Category Normalized Citation Impact (CNCI). Finally, International Collaboration is assessed through International Collaborated Papers (IC). The lists of top journals, international academic awards, and key
+academic organizations are informed by the Academic Excellence Survey (AES) conducted by Shanghai Ranking. Again, the heavy weighting is towards publication and citations but also measures of international reputation (via awards and appointment as Journal editors) and collaborations.
+
+The following information about the Public Health degree offering was then extracted from the Shanghai Ranking websites:
+
+1. Name of the university
+2. Rank given to the university by Shanghai Ranking
+3. Name of specific school and/or department within the university that offers the public health degrees
+4. Name of public health degree/s offered by the school/department
+5. The degree type (i.e. whether it is a taught or research degree)
+6. The mode of study (i.e. full-time or part-time)
+7. The duration of the degree (in months and years)
+8. The core modules
+9. Other options a student can choose from in addition to the core modules/subjects
+10. The tracks or specialisation pathway that are offered by the degree (if any)
+11. The requirement or an option of writing a thesis as part of the course work
+12. The requirement of a placement project
+
+To aid in the extraction, a reproducible and semi-automated workflow was developed that searches the website of the university or school of public health and collects all the text information about the degrees available from the website into a data knowledge store. The initial extraction described above
+was conducted using the generative capabilities of a large language model (LLM) combined with the data knowledge store created as an external knowledge source to provide more accurate, up-to-date, and context-specific information. The extracted information was then reviewed for appropriateness and relevance and corrected as needed. This step produced an initial dataset of 341 public health-
+specific and public health-adjacent degrees from the top 30 universities in the Shanghai Public Health Rankings. From this expanded list, the focus was on public health-specific degrees, specifically a Master of Public Health (MPH). If a university did not offer an MPH degree, the closest public health specific
+degree, which was usually a Master of Science in Public Health, was selected. If a university did not have either MPH or a Master of Science in Public Health, the characteristics of the public health-adjacent degree offerings was summarised to create an archetype of what a generic public health degree would
+be like in this university[^2].
+
+## Results {#sec-results}
+
+The top 30 public health schools and programmes according to the Shanghai Ranking (@tbl-rankings-table) are concentrated in 8 countries with the majority (43%) located in the US (@fig-institutions-by-country). By region (@fig-institutions-by-region), the majority (57%) are located in the Americas (US, Canada, and Brazil) followed by 27% in Europe. The only Asian school in the top 30 ranking is University of Hong Kong (ranking 15th).
+
+
+```{r}
+#| label: tbl-rankings-table
+#| tbl-cap: Top 30 Public Health Schools and Programmes
+#| html-table-processing: none
+#| echo: false
+
+sr_by_subject <- ph_review_data_released |>
+  dplyr::select(rank, institution, country, un_region)
+
+cols <- sr_by_subject |>
+  dplyr::mutate(
+    cols = dplyr::case_when(
+      un_region == "Europe" ~ oxthema::get_oxford_colour("sage"),
+      un_region == "Americas" ~ oxthema::get_oxford_colour("sky"),
+      un_region == "Asia" ~ oxthema::get_oxford_colour("potters"),
+      un_region == "Oceania" ~ oxthema::get_oxford_colour("lavender")
+    )
+  ) |>
+  dplyr::pull(cols) #|>
+  # lapply(FUN = get_alpha_colour) |>
+  # unlist()
+
+sr_by_subject |>
+  knitr::kable(col.names = c("Rank", "Institution", "Country", "Region")) |>
+  kableExtra::kable_styling(
+    bootstrap_options = "bordered",
+    position = "center",
+    full_width = FALSE
+  ) |>
+  kableExtra::column_spec(column = 1:4, background = cols)
+```
+
+```{r}
+#| label: fig-institutions-by-country
+#| fig-cap: Top 30 Public Health Schools and Programmes by Country
+#| fig-width: 10
+#| fig-height: 12
+#| message: false
+#| warning: false
+#| echo: false
+
+barplot_institution_countries
+```
+
+```{r}
+#| label: fig-institutions-by-region
+#| fig-cap: Top 30 Public Health Schools and Programmes by Region
+#| fig-width: 10
+#| fig-height: 12
+#| message: false
+#| warning: false
+#| echo: false
+
+barplot_institution_regions
+```
+
+### General characteristics {#sec-general}
+
+All but one of the programmes in the top 30 public health ranking are taught degrees. The taught degree emphasises structured learning with a focus on coursework and assessments while the research degree has an emphasis on independent research and research expertise involving the completion of a focused and original piece of research under the guidance of a supervisor. University of Sao Paulo is the only institution in the top 30 ranking with a research degree type for its Master of Public Health programme. In terms of modality of teaching, all the Master of Public Health programmes in the top 30 are full-time degree programmes, taught in person. However, 13 of the programmes have an option to be completed part-time. In terms of duration for the full-time programmes, half (15) had study durations of 12 months while 12 had durations of 24 months. One programme exceptionally had a duration of 16
+months while another is for 18 months.
+
+### Common curriculum features {#sec-curriculum-features}
+
+Across the top 30 top ranked universities with public health schools or programmes, the following sixteen themes/topics were included in the core curriculum (with the frequencies of programmes including the module in brackets):
+
+```{r}
+#| label: tbl-core-modules
+#| tbl-cap: Core module themes
+#| html-table-processing: none
+#| echo: false
+
+table_core_module_categories |>
+  knitr::kable(
+    col.names = c("Module", "Frequency", "%")
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "bordered"),
+    position = "center",
+    full_width = FALSE
+  )
+```
+
+Of these core modules, the five most common across the public health degrees are *Epidemiology and Statistics*, *Health Promotion and Disease Prevention*, *Health Systems, Policy, and Governance*, *Social Determinants of Health*, and *Health Economics and Finance* (@fig-core-modules). Less common in the core offerings were leadership and management (offered in only four of the top 30 programmes) and even more rare was ethics (offered in only two) and qualitative research methods (offered in only one). Some of the listed modules may have similar content, such as *epidemiology and statistics* and *quantitative
+methods*. And modules such as *research design and evaluation* may very well include both quantitative and qualitative methods. It is also unclear whether the *health policy and governance* courses are particular to one context or more comparative in content. It would be worth exploring the intended learning outcomes of the various core modules to determine the similarities and differences in more granularity. However, this information is rarely made public, only available to enrolled students and programme faculty. Interrogating the intended learning outcomes and objectives of the core content of top ranked public health programmes would facilitate a more comprehensive landscaping of commonalities and differences and help identify gaps. Nevertheless, at this stage, the comparison of module titles with professional competency standards is sufficient to inform a competitive curriculum design.
+
+```{r}
+#| label: fig-core-modules
+#| fig-cap: Core modules themes
+#| fig-width: 14
+#| fig-height: 12
+#| message: false
+#| warning: false
+#| echo: false
+
+barplot_core_module_categories
+```
+
+In addition to the core modules, all public health degrees in the top 30 offer students a set of optional modules. These options are generally made available under either of two scenarios:
+
+1. A set of subjects from which a student can choose in addition to their required core modules to be able to complete the minimum amount of course credits needed to complete their degree. In some programmes, these are called optional modules as the students are expected to select some of these options. In other programmes, these options are promoted/described as a way for students to tailor fit their public health degree on topics and skills they are interested in outside of the core curriculum.
+
+2. A set of additional subjects/modules that students are expected to take in addition to the core curriculum based on the specialty track that they have chosen. For example, a Master of Public Health degree for a specialisation track in biostatistics may require additional options for statistics modules/subjects in order to earn their degree under the biostatistics specialisation.
+
+The second scenario described above is common in US Master of Public Health degrees. Common optional module themes (in order of prevalence) include:
+
+
+```{r}
+#| label: tbl-option-modules
+#| tbl-cap: Module option themes
+#| html-table-processing: none
+#| echo: false
+
+table_option_module_categories |>
+  knitr::kable(
+    col.names = c("Module", "Frequency", "%")
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "bordered"),
+    position = "center",
+    full_width = FALSE
+  )
+```
+
+Of these module options, the five most common across the top ranking public health degrees are *Health Informatics*, *Health Promotion and Disease Prevention*, *Health Economics and Financing*, *Epidemiology and Biostatistics*, and *Health Systems, Policy, and Governance* (@fig-modules-options). It is notable that while some of the optional modules are core to some degree programmes (e.g. epidemiology and statistics), they are optional to others, perhaps at a more advanced level in some cases. The five most common options align with the most common specialisation tracks in various Master of Public Health degrees such as *Epidemiology*, *Biostatistics*, *Healthcare Management, and Health Systems and Policy*. As with the core modules, there may be some content overlaps in modules such as *health informatics* and *digital health* or *health data science*. It is interesting to note that a focus on non-communicable diseases (NCDs) is rare and there is no evidence of modules on traditional approaches to health. It is also of note that *programme evaluation* and *implementation science* are less common as is *evaluation*, *communication*, or *food systems*.
+
+```{r}
+#| label: fig-modules-options
+#| fig-cap: Module options themes
+#| fig-width: 14
+#| fig-height: 12
+#| message: false
+#| warning: false
+#| echo: false
+
+barplot_option_module_categories
+```
+
+### Thesis and/or work placement requirement {#sec-thesis-placement}
+
+Of the top 30 in the Shanghai Ranking of Public Health programmes, only nine require a thesis as part of the degree, while 16 required some sort of work placement (not necessarily linked to a thesis). Of the 16, all 13 programmes offered by US institutions on the top 30 rankings require completion of a
+placement. This reflects the accreditation requirement of an **Applied Practical Experience (APEx)**. APEx is a mandatory, hands-on component where students apply classroom knowledge in a real-world public health setting, often involving a project with a community agency or organisation. APEx is a planned, supervised, and evaluated experience, requiring a minimum number of hours and accounts for academic credit. Students may work on community engagement projects, provide research expertise, or assist with other public health services for a host organisation. In some programmes, APEx can be in support of a required thesis.
+
+As most MPH programmes are considered professional degrees rather than a foundational course for a research degree qualification such as a PhD, it is not surprising that only 9 require a thesis. Further investigation would help elucidate the motivations and characteristics of candidates to MPH programmes and how they use their degrees upon graduation. For example, does attainment of the degree facilitate career promotion or career shift. Moreover, it is unclear how graduates integrate research or research translation into their roles after completing their MPH degrees. Such insights and an appreciation of the professional competencies can inform the relative emphasis on research and
+research translation on MPH courses relative to other professional skills.
+
+## Professional standards for key skills and competencies {#sec-professional-competencies}
+
+As MPH programmes are considered professional degrees, a review of professional standards provides a framework by which to assess the types of skills and competencies expected of public health graduates by relevant professional bodies. There are currently two main streams of public health education accreditation globally. In the United States, schools and programmes of public health apply for public health education accreditation through the Council on Education for Public Health (CEPH). In the European region, the Association of Schools of Public Health in the European Region (ASPHER) serves as an organising institution of schools and institutions providing public health education in the European region and beyond.
+
+### Council on Education for Public Health (CEPH) {#sec-ceph}
+
+Graduate public health education in the United States began in the early 1900s, with formal accreditation starting in the mid-1940s under the American Public Health Association (APHA). From 1945 to 1973, APHA accredited graduate programmes, initially in schools of public health and later in other academic settings. In 1974, the Council on Education for Public Health (CEPH) was created by APHA and the Association of Schools of Public Health (ASPH) to take over accreditation duties. ASPH became the Association of Schools and Programs of Public Health (ASPPH) in 2013. CEPH initially accredited only schools but later expanded to include community health and preventive medicine programmes in the late 1970s, eventually merging these into a single category of public health programmes in 2005.
+
+The CEPH accreditation criteria covers all aspects of running a school or programme of public health ranging from *fiscal, physical, information technology*, *staffing*, *faculty*, and most importantly *curriculum* [@council_on_education_for_public_health_accreditation_2024].
+
+#### Fiscal, physical, information technology {#sec-fiscal}
+
+The CEPH accreditation criteria require schools or programmes to demonstrate they have sufficient financial, physical and information technology resources to meet its mission, maintain essential operations, support its goals and the delivery of all degree programmes and activities. Physical resources include appropriate office space for faculty and staff, classrooms, student common areas, and laboratories, as applicable. In terms information and technology resources, these include library services, access to necessary hardware and software for both students and faculty (including specialized tools required for coursework), and technical support to assist users in effectively utilizing these resources.
+
+#### Faculty and staffing {#sec-faculty-staffing}
+
+The CEPH accreditation criteria require schools or programmes to have enough qualified faculty (both primary and supporting) to achieve its mission, deliver courses, advise students, and maintain stable operations over time. For Schools of Public Health, primary instructional faculty must meet both of the following requirements:
+
+1. Employed full-time as faculty within the school (i.e., 1.0 FTE in the accredited unit), following the university’s definition of *full-time*. Faculty members who hold honorary appointments in other disciplines or occasionally teach or advise outside the school may still be considered primary instructional faculty, provided their main professional responsibilities are centred on the school’s activities.
+
+2. Have ongoing instructional responsibilities in the school’s public health degree programmes as part of their employment. Faculty whose only instructional role is advising individual doctoral or research students, or whose regular teaching duties are in non-public health degree programmes, do not meet CEPH’s definition of primary instructional faculty.
+
+Schools of Public Health must employ at least 21 primary instructional faculty who must meet all the following requirements:
+
+* Employed full-time as faculty members of the home institution or university, following the university’s definition of full-time
+
+* Hold ongoing instructional responsibilities within the programme as part of their employment. Faculty whose only instructional role is advising individual doctoral or research students are not considered primary instructional faculty under CEPH’s definition
+
+* Devote the majority of their time and effort (i.e., 0.5 FTE or more) to programme-related activities, including teaching. Research and service activities are included in the program’s FTE allocation when they directly benefit the programme or its students. The programme applies FTE definitions consistently and transparently and maintains clear records of all time, effort, and instructional or other duties related to degree programs outside the accredited unit
+
+Access to diverse intellectual perspectives and broad academic exposure is essential for students’ educational quality, as provides the opportunity for faculty to engage with colleagues who share similar interests and expertise. To ensure this breadth and maintain quality, schools and programmes must employ at least three primary faculty members for each concentration at the first degree level offered. For every additional degree level within the same concentration, one more primary instructional faculty member is required. For example, a concentration offering only a master’s degree must have three faculty members; one offering bachelor’s and master’s or master’s and doctoral degrees must have
+four; and a concentration offering bachelor’s, master’s, and doctoral degrees must employ at least five primary faculty members.
+
+In terms of staffing, the requirement is to demonstrate sufficient staff and support personnel to achieve its mission and goals, with resource stability serving as an important factor in assessing adequacy. Staff refers to individuals without faculty appointments whose primary role is staff-related work. The staffing criteria also includes *other personnel* who are students contributing to the programme’s instructional or administrative functions. For example, graduate assistant or similar roles. This is distinct from those initially hired as staff who subsequently pursue coursework or degrees.
+
+#### Curriculum {#sec-curriculum}
+
+Focusing on curriculum, CEPH ensures that all Master of Public Health (MPH) graduates possess foundational public health knowledge. This foundation is demonstrated through mastery of key learning objectives in two main areas:
+
+* Profession and Science of Public Health
+    - public health history, philosophy, and values
+    - core functions and essential services
+    - roles of quantitative and qualitative methods
+    - major health trends and disparities
+    - prevention science
+    - importance of evidence in public health advancement
+
+* Factors Related to Human Health
+
+How environmental, biological, genetic, behavioural, psychological, cultural, social, political, and economic factors influence health, as well as how globalisation and ecological interconnections (e.g., One Health) affect disease burdens.
+
+All MPH graduates must demonstrate competencies that combine traditional public health disciplines of biostatistics, epidemiology, social and behavioural sciences, health services administration, and environmental health sciences along with emerging and cross-cutting areas. The competencies are organised into seven domains (@nte-seven-domains):
+
+::: {#nte-seven-domains .callout-note}
+## Seven domains of competency
+
+**Domain 1: Evidence-Based Approaches to Public Health**
+Graduates apply epidemiologic methods, choose appropriate data collection techniques, analyse and interpret data using statistical and computational tools, and use findings to inform policy and practice.
+
+**Domain 2: Public Health & Health Care Systems**
+Graduates compare health and regulatory systems across settings and examine how
+structural bias, inequities, and racism impact health and equity.
+
+**Domain 3: Planning & Management to Promote Health**
+Graduates assess community needs, design culturally responsive programs and policies, manage resources, and evaluate program effectiveness.
+
+**Domain 4: Policy in Public Health**
+Graduates understand policymaking processes, build partnerships, advocate for equitable policies, and evaluate policy impacts on health outcomes.
+
+**Domain 5: Leadership & Communication**
+Graduates demonstrate leadership, negotiation, and mediation skills, and communicate effectively to diverse audiences with cultural humility and attention to literacy levels.
+
+**Domain 6: Interprofessional and Intersectoral Practice**
+Graduates collaborate across sectors and disciplines to improve population health.
+
+**Domain 7: Systems Thinking**
+Graduates use systems thinking tools to visually represent and analyse public health issues beyond standard narrative approaches.
+
+:::
+
+All the public health schools and programmes of public health based in the United States included in the top 30 of the Shanghai Ranking are CEPH-accredited. As such, the emphasis on foundational public health knowledge is reflected in the most common core modules described above. However, some
+appear to have more focus than others. Indeed, leadership and communication did not feature prominently in either the core or optional modules of the top ranked public health programmes. Nor was it evident that the curriculum provided graduates with skills in interprofessional and intersectoral practice or systems thinking. According to the content reviewed, it appears that the first two domains receive the bulk of the focus with a mix of provision in domains 3 and 4 and very little in domains 5, 6 and 7.
+
+### Association of Schools of Public Health in the European Region (ASPHER) {#sec-aspher}
+
+In 1966, the WHO Regional Office for Europe initiated discussions with leaders of public health and tropical hygiene schools to form regional associations for advancing innovative public health policies. This effort resulted in the creation of AIRESSPE (Association des Institutions Responsable pour l’Enseignement Supérieur de la Santé Publique en Europe). In 1973, it was renamed the Association of Schools of Public Health in the European Region (ASPHER). To date, ASPHER continues to thrive, uniting over 150 institutions involved in public health education and training across Europe and beyond. 
+
+Unlike CEPH, ASPHER does not accredit public health schools and programmes.Instead, it is an independent European organisation dedicated to strengthening the role of public health by improving education and training of public health professionals for both practice and research. ASPHER is a membership organisation of institutions across the EU and the wider WHO European Region dedicated to public health education, training, and workforce professionalism. As such, it nurtures this community of institutions through development of guidance and best practices for public health education.
+
+ASPHER, in partnership with the WHO, has developed the WHO-ASPHER Competency Framework [@who_regional_office_for_europe_who-aspher_2020]. The framework provides a foundation for initiatives to strengthen the public health workforce in the European Region, recognising public health as vital to sustainable development and essential for preventing disease, extending life, and promoting community health. Following is an outline of the WHO-ASPHER Competency Framework for public health professionals, detailing the essential knowledge, skills, and values required across three broad domains: *Content and Context*, *Relations and Interactions*, and *Performance and Achievement*.
+
+#### Content and Context {#sec-content-context}
+
+This domain covers the scientific, ethical, and policy foundations of public health practice:
+
+* **Science and Practice**: Mastery of epidemiology, biostatistics, research methods, and population health analysis. Professionals assess health needs, conduct and evaluate research, use evidence to inform policy, and understand health systems and governance.
+
+* **Promoting Health**: Focus on health education, health literacy, community engagement, empowerment, and addressing health inequalities through prevention, social participation, and evidence-based interventions.
+
+* **Law, Policy, and Ethics**: Understanding and applying international and national laws, ethical principles, and policy frameworks to develop, assess, and implement effective public health programmes.
+
+* **One Health and Health Security**: Integrating human, animal, and environmental health approaches; ensuring preparedness for global health threats; promoting occupational and food safety; addressing climate change and environmental determinants of health.
+
+From the curriculum of the top 30 public health programmes, the emphasis appears to be on science and practice and health promotion but not as much on policy, ethics or one health.
+
+#### Relations and Interactions {#sec-relations-interactions}
+
+This domain emphasizes leadership, collaboration, and communication in public health:
+
+* **Leadership and Systems Thinking**: Inspiring teams, managing change, demonstrating emotional intelligence, and applying systems thinking to improve health organizations.
+
+* **Collaboration and Partnerships**: Building intersectoral and interdisciplinary networks, managing stakeholders, and maintaining strategic partnerships to improve health outcomes.
+
+* **Communication, Culture, and Advocacy**: Communicating effectively across audiences and media, respecting diversity, promoting cultural sensitivity, and advocating for health-promoting policies.
+
+This is similar to the CEPH domains of leadership and communication intersectoral practice and systems thinking. However, this was not clearly evident in the content of the core or optional modules of the top 30 ranking public health programmes.
+
+#### Performance and Achievement {#sec-performance-achievement}
+
+This domain focuses on management, professional growth, and adaptability:
+
+* **Governance and Resource Management**: Managing people, finances, and resources; applying quality assurance, risk management, and health economics to improve system performance.
+
+* **Professional Development and Ethical Practice**: Engaging in lifelong learning, reflective practice, and maintaining ethical standards and accountability.
+
+* **Organizational Literacy and Adaptability**: Demonstrating innovation, resilience, and adaptability; effectively using digital tools, data management, and fundraising to support public health initiatives.
+
+This domain outlines soft skills not evident in the review of curriculum content other than health economics. Of note are skills related to data management, accountability, and fundraising.
+
+The WHO-ASPHER framework defines a comprehensive competency set for public health professionals spanning scientific expertise, leadership, ethical practice, and adaptability to strengthen health systems and promote population well-being in an evolving global context. Of the 8 public health schools and
+programmes from the European region in the Shanghai top 30 ranking, only 4 (London School of Hygiene & Tropical Medicine, University College London, Erasmus University Rotterdam, Karolinska Institute) are members (full or associate) of ASPHER.
+
+## Gaps and Opportunities {#sec-gaps-opportunities}
+
+The review of top ranked Universities and Public Health programmes has identified common features as well as existing gaps in content. Aligning this with an overview of professional standards for public health reveals particular competencies which would advantage graduates in the market. This relates to soft skills such as communication and leadership, as well as intersectoral systems thinking, and content related to ethics, policy, data management, evaluation, and quality assurance. It is also notable that not all public health programmes integrate a work placement component and fewer a research thesis implying the differential emphasis on practical application of skills and the relative importance of research and research translation. There are also opportunities to incorporate content related to emerging areas of importance in public health, such as computational applications for health,
+innovations in diagnostic and healthcare technologies as well as entrepreneurism. Similarly, there is a gap in public health curricula covering how traditional approaches to healthcare may be integrated to more modern healthcare systems. Further investigation regarding how MPH graduates use the skills gained in their professional trajectories would help inform content gaps and opportunities. Market research identifying what employers of MPH graduates are looking for in terms of skills and competencies would also be important to enable impact.
+
+[^1]: As of the writing of this document, the most current rankings for public health subjects provided by Shanghai Ranking is for 2024. See https://www.shanghairanking.com/rankings/gras/2024/AS0402
+
+[^2]: We needed to do this only for University of Oxford.
+

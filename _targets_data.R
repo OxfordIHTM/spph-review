@@ -19,6 +19,18 @@ wb_data_targets <- tar_plan(
 ## QS world university rankings ----
 
 qs_data_targets <- tar_plan(
+  qs_criteria_gdrive_id = "19EdotY77BC_tdIGtppq0Iq5WqAmOOyx_j6M709zsFPE",
+  tar_target(
+    name = qs_rankings_by_subject_criteria_2025,
+    command = qs_get_subject_criteria(
+      gdrive_id = qs_criteria_gdrive_id, year = 2025
+    )
+  ),
+  qs_subject_gdrive_id = "1VO6XbLFoXXtmBqS5SPHHSFUbOgjbZJiP",
+  tar_target(
+    name = qs_rankings_by_subject,
+    command = qs_get_subject_ranking(gdrive_id = qs_subject_gdrive_id)
+  ),
   qs_gdrive_id = "1lF7k_hcm6FyNGJhV7p4x6JEdTOGnDpEy",
   tar_target(
     name = qs_gdrive_list,
@@ -53,6 +65,18 @@ qs_data_targets <- tar_plan(
 ## THE world university rankings ----
 
 the_data_targets <- tar_plan(
+  the_criteria_gdrive_id = "1nqVl29ouYY49AWpj4X3UWG2kU2eQadguVEvd_c2O_8s",
+  tar_target(
+    name = the_rankings_by_subject_criteria_2025,
+    command = the_get_subject_criteria(
+      gdrive_id = the_criteria_gdrive_id, year = 2025
+    )
+  ),
+  the_subject_gdrive_id = "1aNYK8pBGCJtpDeMcHjYo6h0ZlXgFgE--9Q-tNakg8T8",
+  tar_target(
+    name = the_rankings_by_subject,
+    command = the_get_subject_ranking(gdrive_id = the_subject_gdrive_id)
+  ),
   the_gdrive_id = "1zem2pl6w1uJiN_IcJUaCr2COUBx6ur8I",
   tar_target(
     name = the_gdrive_ranking_download_links,
