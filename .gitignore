@@ -19,6 +19,7 @@ data-raw/qs/*.xlsx
 data-raw/usp/
 data-raw/lshtm/
 data-raw/michigan/
+data-raw/melb/
 
 data/
 !data/.gitkeep
