@@ -8,15 +8,15 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-![spph-review](https://img.shields.io/badge/version-0.3.2-blue) [![test
+![spph-review](https://img.shields.io/badge/version-0.3.3-blue) [![test
 targets
 workflow](https://github.com/OxfordIHTM/spph-review/actions/workflows/test-targets-workflow.yml/badge.svg)](https://github.com/OxfordIHTM/spph-review/actions/workflows/test-targets-workflow.yml)
 [![License for
-code](https://img.shields.io/badge/license%20(for%20code)-GPL3.0-blue.svg)](https://opensource.org/licenses/gpl-3.0.html)
+code](https://img.shields.io/badge/license%20\(for%20code\)-GPL3.0-blue.svg)](https://opensource.org/licenses/gpl-3.0.html)
 [![License for
-text](https://img.shields.io/badge/license%20(for%20writing)-CC_BY_4.0-blue)](https://creativecommons.org/licenses/by/4.0/)
+text](https://img.shields.io/badge/license%20\(for%20writing\)-CC_BY_4.0-blue)](https://creativecommons.org/licenses/by/4.0/)
 [![License for
-data](https://img.shields.io/badge/license%20(for%20data)-CC0-blue)](https://creativecommons.org/public-domain/cc0/)
+data](https://img.shields.io/badge/license%20\(for%20data\)-CC0-blue)](https://creativecommons.org/public-domain/cc0/)
 [![DOI](https://zenodo.org/badge/1049585800.svg)](https://doi.org/10.5281/zenodo.17541612)
 <!-- badges: end -->
 
@@ -59,48 +59,48 @@ The project repository is structured as follows:
         |-- packages.R
         |-- renv.lock
 
-- `.github` contains project testing and automated deployment of outputs
-  workflows via continuous integration and continuous deployment (CI/CD)
-  using Github Actions.
+  - `.github` contains project testing and automated deployment of
+    outputs workflows via continuous integration and continuous
+    deployment (CI/CD) using Github Actions.
 
-- `data/` contains intermediate and final data outputs produced by the
-  workflow.
+  - `data/` contains intermediate and final data outputs produced by the
+    workflow.
 
-- `data-raw/` contains raw datasets, usually either downloaded from
-  source or added manually, that are used in the project.
+  - `data-raw/` contains raw datasets, usually either downloaded from
+    source or added manually, that are used in the project.
 
-- `figures/` contains figures produced by the workflow.
+  - `figures/` contains figures produced by the workflow.
 
-- `outputs/` contains compiled reports produced by the workflow.
+  - `outputs/` contains compiled reports produced by the workflow.
 
-- `R/` contains functions developed/created specifically for use in this
-  workflow.
+  - `R/` contains functions developed/created specifically for use in
+    this workflow.
 
-- `renv/` contains `renv` package specific files and directories used by
-  the package for maintaining R package dependencies within the project.
-  The directory `renv/library`, is a library that contains all packages
-  currently used by the project. This directory, and all files and
-  sub-directories within it, are all generated and managed by the `renv`
-  package. Users should not change/edit these manually.
+  - `renv/` contains `renv` package specific files and directories used
+    by the package for maintaining R package dependencies within the
+    project. The directory `renv/library`, is a library that contains
+    all packages currently used by the project. This directory, and all
+    files and sub-directories within it, are all generated and managed
+    by the `renv` package. Users should not change/edit these manually.
 
-- `reports/` contains literate code for R Markdown and/or Quarto reports
-  rendered in the workflow.
+  - `reports/` contains literate code for R Markdown and/or Quarto
+    reports rendered in the workflow.
 
-- `_targets*.R` files define the steps in the workflow’s data ingest,
-  data processing, data analysis, and reporting pipelines.
+  - `_targets*.R` files define the steps in the workflow’s data ingest,
+    data processing, data analysis, and reporting pipelines.
 
-- `.Rprofile` file is a project R profile generated when initiating
-  `renv` for the first time. This file is run automatically every time R
-  is run within this project, and `renv` uses it to configure the R
-  session to use the `renv` project library.
+  - `.Rprofile` file is a project R profile generated when initiating
+    `renv` for the first time. This file is run automatically every time
+    R is run within this project, and `renv` uses it to configure the R
+    session to use the `renv` project library.
 
-- `packages.R` file lists out all R package dependencies required by the
-  workflow.
+  - `packages.R` file lists out all R package dependencies required by
+    the workflow.
 
-- `renv.lock` file is the `renv` lockfile which records enough metadata
-  about every package used in this project that it can be re-installed
-  on a new machine. This file is generated by the `renv` package and
-  should not be changed/edited manually.
+  - `renv.lock` file is the `renv` lockfile which records enough
+    metadata about every package used in this project that it can be
+    re-installed on a new machine. This file is generated by the `renv`
+    package and should not be changed/edited manually.
 
 ## Reproducibility
 
@@ -108,7 +108,7 @@ The project repository is structured as follows:
 
 This project requires the following system dependencies:
 
-- `poppler`
+  - `poppler`
 
 This project depends on the
 [`{pdftools}`](https://poppler.freedesktop.org/) package which requires
@@ -120,14 +120,14 @@ installed first in order to be able to install `{pdftools}` from source.
 Installation of the `poppler` library for Linux is described
 [here](https://docs.ropensci.org/pdftools/#installation).
 
-- `quarto`
+  - `quarto`
 
 This project uses the [`quarto`](https://quarto.org/) open-source
 scientific and technical publishing system. Instructions on how to
 download and install `quarto` can be found
 [here](https://quarto.org/docs/get-started/).
 
-- `ollama`
+  - `ollama`
 
 This project uses `ollama` to serve open large language modles (LLM)
 locally. Instructions on how to download and install `ollama` can be
@@ -166,17 +166,19 @@ Currently, the project has workflows for the following:
 
 The following diagram illustrates this pipeline.
 
+Warning: program compiled against libxml 213 using older 209
+
 ``` mermaid
 graph LR
   style Graph fill:#FFFFFF00,stroke:#000000;
   subgraph Graph
     direction LR
     x5f8756e1a2c66304["aspher_members_list_raw"]:::uptodate --> x98bc0d118cd6ec5b(["aspher_members_list"]):::uptodate
-    x98bc0d118cd6ec5b(["aspher_members_list"]):::uptodate --> x9f70c79a0bf573bd(["aspher_members_list_csv"]):::outdated
+    x98bc0d118cd6ec5b(["aspher_members_list"]):::uptodate --> x9f70c79a0bf573bd(["aspher_members_list_csv"]):::uptodate
     x81884105d0e1a01e(["aspher_members_directory_url"]):::uptodate --> x5f8756e1a2c66304["aspher_members_list_raw"]:::uptodate
     x1e4c94ade0e7c48a(["aspher_members_pages"]):::uptodate --> x5f8756e1a2c66304["aspher_members_list_raw"]:::uptodate
     x6267feaba0bf3932(["aspph_members_directory_url"]):::uptodate --> xae9f694dc6961767(["aspph_members_list"]):::uptodate
-    xae9f694dc6961767(["aspph_members_list"]):::uptodate --> x7ce096f62d60bfd7(["aspph_members_list_csv"]):::outdated
+    xae9f694dc6961767(["aspph_members_list"]):::uptodate --> x7ce096f62d60bfd7(["aspph_members_list_csv"]):::uptodate
     
   end
 ```
@@ -196,16 +198,21 @@ targets::tar_make(dplyr::starts_with(c("aspph", "aspher")))
 
 The following diagram illustrates this pipeline.
 
+Warning: program compiled against libxml 213 using older 209
+
 ``` mermaid
 graph LR
   style Graph fill:#FFFFFF00,stroke:#000000;
   subgraph Graph
     direction LR
     xf5b5abed18ea1d1a(["qs_gdrive_id"]):::uptodate --> x6416e41cf8dc3821(["qs_gdrive_list"]):::uptodate
+    x2cbca884f984ce6c(["qs_rankings_by_subject"]):::uptodate --> x602e5639f8a4b592(["qs_life_sci_rankings_csv"]):::uptodate
     xd53eac577d2929f8["qs_overall_rankings_list"]:::uptodate --> x37b9da1597241587["qs_overall_rankings"]:::uptodate
-    x37b9da1597241587["qs_overall_rankings"]:::uptodate --> x6b6ae39ee55de2f6(["qs_overall_rankings_csv"]):::outdated
+    x37b9da1597241587["qs_overall_rankings"]:::uptodate --> x6b6ae39ee55de2f6(["qs_overall_rankings_csv"]):::uptodate
     x6416e41cf8dc3821(["qs_gdrive_list"]):::uptodate --> x10da32f41de863de["qs_overall_rankings_download_file"]:::uptodate
     x10da32f41de863de["qs_overall_rankings_download_file"]:::uptodate --> xd53eac577d2929f8["qs_overall_rankings_list"]:::uptodate
+    xd641d44dc7be74fb(["qs_subject_gdrive_id"]):::uptodate --> x2cbca884f984ce6c(["qs_rankings_by_subject"]):::uptodate
+    xedd25ac9f36b9898(["qs_criteria_gdrive_id"]):::uptodate --> x8168c720c392fe41(["qs_rankings_by_subject_criteria_2025"]):::uptodate
     x283ab20454910291(["sr_ph_rankings_gdrive_list"]):::uptodate --> xe2fef9f751519f5f(["sr_ph_rankings_download_file"]):::uptodate
     xf9bf18a76745f614(["sr_gdrive_id"]):::uptodate --> x283ab20454910291(["sr_ph_rankings_gdrive_list"]):::uptodate
     x74232ff4e76c1dcf(["sr_public_health_rankings_raw"]):::uptodate --> xa7027837a89e5ec4(["sr_public_health_rankings"]):::uptodate
@@ -213,11 +220,14 @@ graph LR
     xa7027837a89e5ec4(["sr_public_health_rankings"]):::uptodate --> x40fa25b81086eaaf(["sr_public_health_rankings_csv"]):::outdated
     xe2fef9f751519f5f(["sr_ph_rankings_download_file"]):::uptodate --> x74232ff4e76c1dcf(["sr_public_health_rankings_raw"]):::uptodate
     x08954fb96f89d64e(["the_gdrive_id"]):::uptodate --> xb3b152c5e5e4ae89(["the_gdrive_ranking_download_links"]):::uptodate
+    xd8185f2e7eebcb6a(["the_rankings_by_subject"]):::uptodate --> x1c55767e45cbd9e5(["the_med_health_rankings_csv"]):::uptodate
     xac3c5bdc37f5521d["the_rankings_pdf_text"]:::uptodate --> x2a541b9a4da4732f["the_overall_rankings"]:::uptodate
-    x2a541b9a4da4732f["the_overall_rankings"]:::uptodate --> xbb992b8b8554cfa8(["the_overall_rankings_csv"]):::outdated
+    x2a541b9a4da4732f["the_overall_rankings"]:::uptodate --> xbb992b8b8554cfa8(["the_overall_rankings_csv"]):::uptodate
+    x70e637713b4924f1(["the_subject_gdrive_id"]):::uptodate --> xd8185f2e7eebcb6a(["the_rankings_by_subject"]):::uptodate
+    x71c6c20122626dc8(["the_criteria_gdrive_id"]):::uptodate --> x81463c34ec80ec82(["the_rankings_by_subject_criteria_2025"]):::uptodate
     xb3b152c5e5e4ae89(["the_gdrive_ranking_download_links"]):::uptodate --> xcb7c43287b8b4747["the_rankings_download_files"]:::uptodate
-    x91d62071178d9fcb(["the_rankings_pdf_pages"]):::uptodate --> xac3c5bdc37f5521d["the_rankings_pdf_text"]:::uptodate
     xcb7c43287b8b4747["the_rankings_download_files"]:::uptodate --> xac3c5bdc37f5521d["the_rankings_pdf_text"]:::uptodate
+    x91d62071178d9fcb(["the_rankings_pdf_pages"]):::uptodate --> xac3c5bdc37f5521d["the_rankings_pdf_text"]:::uptodate
     x578811b318f92d03(["wb_income_download_file"]):::uptodate --> x1a5851e4bb9a8b0f(["wb_income_groups"]):::uptodate
     
   end
@@ -234,6 +244,8 @@ targets::tar_make(dplyr::starts_with(c("the", "qs", "sr")))
     (RAG)
 
 The following diagram illustrates this pipeline.
+
+Warning: program compiled against libxml 213 using older 209
 
 ``` mermaid
 graph LR
@@ -256,58 +268,60 @@ graph LR
     x23bec5fed1b41fa6(["lshtm_master_programme_base_link"]):::uptodate --> x2bc43f2e04ac22c8(["lshtm_master_programme_links"]):::uptodate
     xe4a88568d63f5f8a(["lshtm_master_programme_html_file"]):::uptodate --> x2bc43f2e04ac22c8(["lshtm_master_programme_links"]):::uptodate
     x3109d2db975fa922(["mail_master_programme_base_link"]):::uptodate --> x1a41a51ab5210cc5(["mail_master_programme_links"]):::uptodate
+    xaf7343f3ef60a5a1(["melb_gdrive_id"]):::uptodate --> x724a4abea8bcd309(["melb_master_programme_html_file"]):::uptodate
     x16c7fb5e014309f5(["melb_master_programme_base_link"]):::uptodate --> xc5eb004ce5a0f56f(["melb_master_programme_links"]):::uptodate
+    x724a4abea8bcd309(["melb_master_programme_html_file"]):::uptodate --> xc5eb004ce5a0f56f(["melb_master_programme_links"]):::uptodate
     x5f951baab589cff4(["mich_gdrive_id"]):::uptodate --> x0d1e48120125e3a7(["mich_master_programme_html_file"]):::uptodate
     x0d1e48120125e3a7(["mich_master_programme_html_file"]):::uptodate --> xd50ae66e5e359cd0(["mich_master_programme_links"]):::uptodate
     x94d4c52ac8e5d10c(["mich_master_programme_base_link"]):::uptodate --> xd50ae66e5e359cd0(["mich_master_programme_links"]):::uptodate
-    xb02800a1f2e0cece(["ph_review_data_expanded"]):::uptodate --> xe2dd634a8c093bab(["modules_core_expanded"]):::uptodate
-    x1541b6e79f348f94(["ph_review_data_expanded_options"]):::uptodate --> xc5b7ec4bc2319a3f(["modules_option_expanded"]):::uptodate
+    xb02800a1f2e0cece(["ph_review_data_expanded"]):::outdated --> xe2dd634a8c093bab(["modules_core_expanded"]):::outdated
+    x1541b6e79f348f94(["ph_review_data_expanded_options"]):::outdated --> xc5b7ec4bc2319a3f(["modules_option_expanded"]):::outdated
     x59088797452b46b4(["ox_master_programme_base_link"]):::uptodate --> xd30cb6fd57d10bd4(["ox_master_programme_links"]):::uptodate
-    x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated --> xa97b14abe598dc82(["ph_master_programme_links"]):::outdated
-    x4ffc4b286e74b106(["brist_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    xd30cb6fd57d10bd4(["ox_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x9265149a2831ff64(["bsph_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x539fe7125dd4fbab(["queen_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x2136fcbf55496cab(["busph_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x20514717df1ea6b9(["imp_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x2727c8fef021edde(["dlsph_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    xa8ce1dff486c3fa9(["karol_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x828ed7a4bd3f3d21["emory_master_programme_links"]:::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x612ae5ced287a482(["kcl_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    xe32a54723b50e83a(["stan_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x7f91187a7423bca1(["eras_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    xf8a25bd53511a35b(["sydn_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x1e4a6fd3b8c0b563(["gsph_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x38ca7d42df8061aa(["ubc_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x115c3097f1a48e64(["hku_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x2f5fb0bc5cf32d15(["ucl_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x3c828a768d08b03c(["hsph_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x3590313d9b5e3e18["ucla_master_programme_links"]:::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x83478a25351aecd3(["uott_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x286fd7a32eeae237(["wsph_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    xd50ae66e5e359cd0(["mich_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    xed4894dba5d96c12(["unsw_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    xa518d7e4a5a3b466(["ysph_master_programme_links"]):::outdated --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x1a41a51ab5210cc5(["mail_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x25d0550b1aade5fc(["upen_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x2bc43f2e04ac22c8(["lshtm_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x6e23dd9e1d84da78(["usp_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    xc5eb004ce5a0f56f(["melb_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    xfa5eba42b9e1828b(["ucsf_master_programme_links"]):::outdated --> x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated
-    x001f1d18a4407c5a(["ph_master_programme_list"]):::outdated --> x2c5ad34e3d0cd2e8(["ph_master_programme_list_csv"]):::outdated
-    xe2dd634a8c093bab(["modules_core_expanded"]):::uptodate --> x47962afd33e90545["ph_modules_core_category"]:::outdated
+    x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate --> xa97b14abe598dc82(["ph_master_programme_links"]):::outdated
+    x4ffc4b286e74b106(["brist_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    xf8a25bd53511a35b(["sydn_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x9265149a2831ff64(["bsph_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    xd30cb6fd57d10bd4(["ox_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x2136fcbf55496cab(["busph_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x20514717df1ea6b9(["imp_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x2727c8fef021edde(["dlsph_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    xa8ce1dff486c3fa9(["karol_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x828ed7a4bd3f3d21["emory_master_programme_links"]:::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x612ae5ced287a482(["kcl_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    xd50ae66e5e359cd0(["mich_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x7f91187a7423bca1(["eras_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    xe32a54723b50e83a(["stan_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x1e4a6fd3b8c0b563(["gsph_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x25d0550b1aade5fc(["upen_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x115c3097f1a48e64(["hku_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x38ca7d42df8061aa(["ubc_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x3c828a768d08b03c(["hsph_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x539fe7125dd4fbab(["queen_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    xc5eb004ce5a0f56f(["melb_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x3590313d9b5e3e18["ucla_master_programme_links"]:::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x83478a25351aecd3(["uott_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x286fd7a32eeae237(["wsph_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    xfa5eba42b9e1828b(["ucsf_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    xed4894dba5d96c12(["unsw_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    xa518d7e4a5a3b466(["ysph_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x2bc43f2e04ac22c8(["lshtm_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x2f5fb0bc5cf32d15(["ucl_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x1a41a51ab5210cc5(["mail_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x6e23dd9e1d84da78(["usp_master_programme_links"]):::uptodate --> x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate
+    x001f1d18a4407c5a(["ph_master_programme_list"]):::uptodate --> x2c5ad34e3d0cd2e8(["ph_master_programme_list_csv"]):::outdated
+    xe2dd634a8c093bab(["modules_core_expanded"]):::outdated --> x47962afd33e90545["ph_modules_core_category"]:::outdated
     x05d83435826f8e6b(["module_categories"]):::uptodate --> x47962afd33e90545["ph_modules_core_category"]:::outdated
     xfc2a1b8d35ffe38f(["ph_analysis_model"]):::outdated --> x47962afd33e90545["ph_modules_core_category"]:::outdated
     x32dd16c1fab5bebf(["module_options_categories"]):::uptodate --> xa808a822d9389ef4["ph_modules_option_category"]:::outdated
-    xc5b7ec4bc2319a3f(["modules_option_expanded"]):::uptodate --> xa808a822d9389ef4["ph_modules_option_category"]:::outdated
+    xc5b7ec4bc2319a3f(["modules_option_expanded"]):::outdated --> xa808a822d9389ef4["ph_modules_option_category"]:::outdated
     xfc2a1b8d35ffe38f(["ph_analysis_model"]):::outdated --> xa808a822d9389ef4["ph_modules_option_category"]:::outdated
-    xf0fee9d2b37a3827(["review_gdrive_id"]):::uptodate --> xe6494c691f0de688(["ph_review_data"]):::uptodate
-    xe6494c691f0de688(["ph_review_data"]):::uptodate --> xb02800a1f2e0cece(["ph_review_data_expanded"]):::uptodate
-    xe6494c691f0de688(["ph_review_data"]):::uptodate --> x1541b6e79f348f94(["ph_review_data_expanded_options"]):::uptodate
-    xe6494c691f0de688(["ph_review_data"]):::uptodate --> x3573746531b63d9d(["ph_review_data_processed"]):::outdated
+    xf0fee9d2b37a3827(["review_gdrive_id"]):::uptodate --> xe6494c691f0de688(["ph_review_data"]):::outdated
+    xe6494c691f0de688(["ph_review_data"]):::outdated --> xb02800a1f2e0cece(["ph_review_data_expanded"]):::outdated
+    xe6494c691f0de688(["ph_review_data"]):::outdated --> x1541b6e79f348f94(["ph_review_data_expanded_options"]):::outdated
     xa808a822d9389ef4["ph_modules_option_category"]:::outdated --> x3573746531b63d9d(["ph_review_data_processed"]):::outdated
-    xa7027837a89e5ec4(["sr_public_health_rankings"]):::uptodate --> x3573746531b63d9d(["ph_review_data_processed"]):::outdated
+    xe6494c691f0de688(["ph_review_data"]):::outdated --> x3573746531b63d9d(["ph_review_data_processed"]):::outdated
     x47962afd33e90545["ph_modules_core_category"]:::outdated --> x3573746531b63d9d(["ph_review_data_processed"]):::outdated
+    xa7027837a89e5ec4(["sr_public_health_rankings"]):::uptodate --> x3573746531b63d9d(["ph_review_data_processed"]):::outdated
     x3573746531b63d9d(["ph_review_data_processed"]):::outdated --> x2e27caf1c7d9ed2d(["ph_review_data_processed_csv"]):::outdated
     xde0dc4c4ce3aaef2(["ph_review_data_release_file"]):::outdated --> xa04cc092ddf50c86(["ph_review_data_released"]):::outdated
     x81e999888dc40458(["queen_master_programme_base_link"]):::uptodate --> x539fe7125dd4fbab(["queen_master_programme_links"]):::uptodate
@@ -321,14 +335,14 @@ graph LR
     x20c4e09e9a980e50(["ucl_master_programme_base_link"]):::uptodate --> x2f5fb0bc5cf32d15(["ucl_master_programme_links"]):::uptodate
     x10349c6a49f7c789(["ucla_master_programme_base_link"]):::uptodate --> x3590313d9b5e3e18["ucla_master_programme_links"]:::uptodate
     x5fae802164025394(["ucla_master_programme_page"]):::uptodate --> x3590313d9b5e3e18["ucla_master_programme_links"]:::uptodate
-    x46e6c6b00df5ee8d(["ucsf_master_programme_base_link"]):::uptodate --> xfa5eba42b9e1828b(["ucsf_master_programme_links"]):::outdated
+    x46e6c6b00df5ee8d(["ucsf_master_programme_base_link"]):::uptodate --> xfa5eba42b9e1828b(["ucsf_master_programme_links"]):::uptodate
     x500af41fd1eff9cb(["upen_master_programme_base_link"]):::uptodate --> x25d0550b1aade5fc(["upen_master_programme_links"]):::uptodate
     x7efdd5d00ac0ac99(["usp_gdrive_id"]):::uptodate --> xad36e534977318df(["usp_master_programme_html_file"]):::uptodate
     xad36e534977318df(["usp_master_programme_html_file"]):::uptodate --> x6e23dd9e1d84da78(["usp_master_programme_links"]):::uptodate
     xaec0c0b2c134d0a5(["usp_master_programme_base_link"]):::uptodate --> x6e23dd9e1d84da78(["usp_master_programme_links"]):::uptodate
     x578811b318f92d03(["wb_income_download_file"]):::uptodate --> x1a5851e4bb9a8b0f(["wb_income_groups"]):::uptodate
     xb2261587e1ed3d71(["wsph_master_programme_base_link"]):::uptodate --> x286fd7a32eeae237(["wsph_master_programme_links"]):::uptodate
-    xfad01d76630fd18c(["ysph_master_programme_base_link"]):::uptodate --> xa518d7e4a5a3b466(["ysph_master_programme_links"]):::outdated
+    xfad01d76630fd18c(["ysph_master_programme_base_link"]):::uptodate --> xa518d7e4a5a3b466(["ysph_master_programme_links"]):::uptodate
     
   end
 ```

@@ -13,7 +13,7 @@ contact:
     family-names: Guevarra
     given-names: Ernest
 title: "spph-review: Mapping Master of Public Health Programmes"
-version: 0.3.2
+version: 0.3.3
 identifiers:
   - type: doi
     value: 10.5281/zenodo.17541612
